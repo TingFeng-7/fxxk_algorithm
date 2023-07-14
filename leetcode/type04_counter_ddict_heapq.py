@@ -12,7 +12,25 @@ class Solution:
                 arr[ord(x) - ord('a')] -= 1
         
         return True
+    
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        from collections import defaultdict
+        n = len(s)
+        hashmap = defaultdict()
+        l,r = 0 , 0
+        maxl = 0
+        while r < n:
+            c = s[r]
+            hashmap[c] = hashmap.get(c, 0) + 1
+            r+=1
+            while hashmap[c] >= 2: # 收缩条件
+                del_char = s[l]
+                l+=1
+                hashmap[del_char] -=1
+            maxl = max(maxl, r-l)
 
+        return maxl
+            
     def canConstruct01(self, ransomNote: str, magazine: str) -> bool:
 
         #!2. 哈希表 （带默认值
