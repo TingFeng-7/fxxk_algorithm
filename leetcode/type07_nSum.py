@@ -1,6 +1,6 @@
 # from typing import int
 
-def threeSum(self, nums: [int]) -> [[int]]:
+def threeSum(self, nums: list) -> list(list()):
     nums.sort()
     res, k = [], 0
     for k in range(len(nums) - 2):

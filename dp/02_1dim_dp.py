@@ -1,8 +1,7 @@
 from typing import List
 
 class Solution:
-
-# -n https://leetcode.cn/problems/longest-palindromic-substring/submissions/
+    # -n https://leetcode.cn/problems/longest-palindromic-substring/submissions/
     def lengthOfLIS(self, nums: List[int]) -> int:
         n = len(nums)
         dp=[1] * n
@@ -15,7 +14,7 @@ class Solution:
                     #max 里面有自己 
             res = max(res, dp[i])
         return res
-# -n 丑数
+    # -n 丑数
     def isUgly(self, n: int) -> bool:
         if n <= 0:
             return False
@@ -28,7 +27,7 @@ class Solution:
             n //= 5
         return n == 1
     
-# -n 丑数2
+    # -n 丑数2
     def nthUglyNumber(self,n: int) -> int:
         # 三个指向有序链表头结点的指针
         p2,p3,p5 = 1,1,1

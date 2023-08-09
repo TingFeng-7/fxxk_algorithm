@@ -10,7 +10,6 @@ class Solution:
                 return False
             else:
                 arr[ord(x) - ord('a')] -= 1
-        
         return True
     
     def lengthOfLongestSubstring(self, s: str) -> int:
@@ -28,7 +27,6 @@ class Solution:
                 l+=1
                 hashmap[del_char] -=1
             maxl = max(maxl, r-l)
-
         return maxl
             
     def canConstruct01(self, ransomNote: str, magazine: str) -> bool:

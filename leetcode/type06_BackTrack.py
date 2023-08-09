@@ -67,7 +67,6 @@ class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         if not digits:
             return list()
-        
         phoneMap = {
             "2": "abc",
             "3": "def",
@@ -78,10 +77,12 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
+        combination = list()
+        res = list()
 
         def backtrack(index: int):
             if index == len(digits):
-                combinations.append("".join(combination))
+                res.append("".join(combination))
             else:
                 digit = digits[index]
                 for letter in phoneMap[digit]:
@@ -89,10 +90,9 @@ class Solution:
                     backtrack(index + 1)
                     combination.pop()
 
-        combination = list()
-        combinations = list()
+
         backtrack(0)
-        return combinations
+        return res
     
     def partition(self, s: str) -> List[List[str]]:
     
