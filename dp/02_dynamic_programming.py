@@ -15,7 +15,7 @@ class Solution:
                     #max 里面有自己 
             res = max(res, dp[i])
         return res
-# -n 丑数
+    # -n 丑数
     def isUgly(self, n: int) -> bool:
         if n <= 0:
             return False
@@ -28,7 +28,7 @@ class Solution:
             n //= 5
         return n == 1
     
-# -n 丑数2
+    # -n 丑数2
     def nthUglyNumber(self,n: int) -> int:
         # 三个指向有序链表头结点的指针
         p2,p3,p5 = 1,1,1
@@ -74,13 +74,42 @@ class Solution:
         print(dp)
         return dp[n]
     
+    #-n 零钱兑换
     def coinChange(self, coins: List[int], amount: int) -> int:
         dp = [100000] * (amount+1)
         dp[0] = 0
-        n = len(coins)
-        for i in range(1,amount+1):
+        # n = len(coins)
+        for i in range(1, amount+1):
             for j in coins:
-                if i-j < 0:
+                if i - j < 0:
                     continue
-                dp[i] = min(dp[i],dp[i-j]+1)
+                dp[i] = min(dp[i], dp[i-j]+1)
         return -1 if dp[amount] == 100000 else dp[amount]
+    
+    #-n 整数拆分  （乘积最大的整数）
+    def integerBreak(self, n):
+        dp = [0] * (n + 1)   # 创建一个大小为n+1的数组来存储计算结果
+        dp[2] = 1  # 初始化dp[2]为1，因为当n=2时，只有一个切割方式1+1=2，乘积为1
+       
+        # 从3开始计算，直到n
+        for i in range(3, n + 1):
+            # 遍历所有可能的切割点
+            for j in range(1, i // 2 + 1):
+                # 计算切割点j和剩余部分(i-j)的乘积，并与之前的结果进行比较取较大值
+                dp[i] = max(dp[i], (i - j) * j, dp[i - j] * j)
+        
+        return dp[n]  # 返回最终的计算结
+    
+        #-n 不同的二叉搜索树
+    def numTrees(self, n: int) -> int:
+        dp = [0]*(n+1)
+        if n==1:
+            return 1
+        elif n==2:
+            return 2
+        dp[0], dp[1] , dp[2] = 1,1,2
+        for i in range(3, n+1):
+            for j in range(0, i):
+                print(f'{dp[j]} * {dp[i-1-j]}')
+                dp[i] += dp[j] * dp[i-1-j] #dp[0] * dp[2]
+        return dp[n]

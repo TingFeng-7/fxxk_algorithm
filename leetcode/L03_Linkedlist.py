@@ -1,6 +1,5 @@
 
 from typing import List, Optional
-import heapq
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -32,8 +31,8 @@ def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optio
         if p2!=None:
             val += p2.val
             p2=p2.next
-        carry = val//10
-        val = val%10
+        carry = val // 10
+        val = val % 10
         p.next= ListNode(val)
         p=p.next
     return dummy.next
@@ -75,31 +74,30 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
     return dummy.next
 
 
-    def longestValidParentheses(self, s: str) -> int:
-        # 定义一个栈，用于存放括号的位置
-        stack = [-1]
-        # 定义一个变量，用于存放最长的括号的长度
-        max_len = 0
-        # 定义一个变量，用于存放括号的位置
-        flag = -1
-        # 遍历字符串s
-        for i in range(len(s)):
-            # 如果当前字符是括号，则将其位置放入栈中
-            if s[i] == '(':
-                stack.append(i)
-            # 如果当前字符是右括号，则从栈中弹出一个括号，并记录其位置
+def longestValidParentheses(self, s: str) -> int:
+    # 定义一个栈，用于存放括号的位置
+    stack = [-1]
+    # 定义一个变量，用于存放最长的括号的长度
+    max_len = 0
+    # 定义一个变量，用于存放括号的位置
+    flag = -1
+    # 遍历字符串s
+    for i in range(len(s)):
+        # 如果当前字符是括号，则将其位置放入栈中
+        if s[i] == '(':
+            stack.append(i)
+        # 如果当前字符是右括号，则从栈中弹出一个括号，并记录其位置
+        else:
+            stack.pop(-1)
+            # 如果栈不为空，则将栈顶元素出栈，并记录其位置
+            if len(stack):
+                # stack.pop(-1)
+                max_len = max(max_len, i - stack[-1])
+            # 如果栈为空，则将当前元素放入栈中
             else:
-                stack.pop(-1)
-                # 如果栈不为空，则将栈顶元素出栈，并记录其位置
-                if len(stack):
-                    # stack.pop(-1)
-                    max_len = max(max_len, i - stack[-1])
-                # 如果栈为空，则将当前元素放入栈中
-                else:
-                    # flag = i
-                    stack.append(i)
-        # 返回最长的括号的长度
-        return max_len
+                # flag = i
+                stack.append(i)
+    return max_len
     
 #-n 合并k个有序链表
 def mergeKLists(self, lists: List[ListNode]) -> ListNode:
@@ -135,6 +133,31 @@ def mergeKLists(self, lists: List[ListNode]) -> ListNode:
             lists[idx] = lists[idx].next
     # 返回链表头节点
     return dummy.next
+#-n 旋转链表
+def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    if not head:
+        return head
+    length = 0
+    cur = head
+    while cur.next:
+        cur = cur.next
+        length+=1
+    cur.next = head
+    length += 1#计算链表长度
+    k = k % length
+    k = length - k #找到断点
+    cnt = 0
+    cur = head
+    dummy = ListNode(None)
+    while cur:
+        cnt+=1
+        if cnt == k:
+            dummy = cur.next #存头节点
+            cur.next = None #将断点变成尾部节点
+            break
+        cur = cur.next
+    return dummy
+
 
 def count(val):
     zerosum=0

@@ -1,3 +1,7 @@
+from typing import List
+from collections import defaultdict
+import heapq
+
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         arr = [0] * 26
@@ -13,6 +17,7 @@ class Solution:
         
         return True
     
+    #-n 最长无重复字串
     def lengthOfLongestSubstring(self, s: str) -> int:
         from collections import defaultdict
         n = len(s)
@@ -32,9 +37,7 @@ class Solution:
         return maxl
             
     def canConstruct01(self, ransomNote: str, magazine: str) -> bool:
-
-        #!2. 哈希表 （带默认值
-        from collections import defaultdict,Counter
+        # 哈希表 （带默认值
         hashmap = defaultdict(int)
 
         for x in magazine:
@@ -48,7 +51,7 @@ class Solution:
                 hashmap[x] -= 1
         return True
     
-    # 查找第一个字符
+    # -n 查找第一个字符
     def firstUniqChar(self, s: str) -> int:
         #todo 3. 计数器 统计每个出现的频率
         from collections import Counter
@@ -58,8 +61,6 @@ class Solution:
                 return idx
         return -1
 
-from typing import List
-import heapq
 
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:

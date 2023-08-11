@@ -12,6 +12,7 @@ class Solution:
                     maxL = j-i+1
                     left,right = i, j
         return s[left:left+maxL]
+    
     def longestPalindrome_1(self, s: str) -> str: #二重循环 + 判断是否回文 中心扩散法
         res = ""
         def palindrome(s, l, r):
@@ -29,6 +30,7 @@ class Solution:
             res = res if len(res) > len(s1) else s1
             res = res if len(res) > len(s2) else s2
         return res
+    
     def countSubstrings(self, s):
             # 动态规划法
             dp = [[False] * len(s) for _ in range(len(s))]
@@ -41,3 +43,22 @@ class Solution:
                         ans += 1
 
             return ans
+    
+    def strStr(self, ss: str, pp: str) -> int:
+        n = len(ss)
+        m = len(pp)
+        s = list(ss)
+        p = list(pp)
+
+        # 枚举原串的「发起点」
+        for i in range(0, n - m + 1):
+            a = i
+            b = 0
+            # 从原串的「发起点」和匹配串的「首位」开始，尝试匹配
+            while b < m and s[a] == p[b]:
+                a += 1
+                b += 1
+            # 如果能够完全匹配，返回原串的「发起点」下标
+            if b == m:
+                return i
+        return -1
