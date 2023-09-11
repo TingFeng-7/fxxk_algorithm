@@ -1,6 +1,6 @@
-nums = [1,6,7,8]
-moveFrom= [1,7,2]
-moveTo= [2,9,5]
+nums = [1, 6, 7, 8]
+moveFrom = [1, 7, 2]
+moveTo = [2, 9, 5]
 nums = list(set(nums))
 n = len(nums)
 hashmap = {}
@@ -17,4 +17,3 @@ for i in range(len(moveFrom)):
     nums[idx] = add
     hashmap[add] = idx
 print(nums.sort())
-    

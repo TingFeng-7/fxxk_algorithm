@@ -1,77 +1,100 @@
 
 from typing import List, Optional
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-#-n 快慢指针找中点
+# ~ 快慢指针找中点
 def end_of_first_half(self, head):
-    fast = head
-    slow = head
-    while fast.next is not None and fast.next.next is not None:
+    slow, fast = head, head
+    while fast.next and fast.next.next:
         fast = fast.next.next
         slow = slow.next
     return slow
 
-#-n 两数之和 (链表版)
-# https://leetcode.cn/problems/add-two-numbers/submissions/
+# -n 02. 两数相加 (链表版)
 def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-    p1,p2 = l1,l2
-    dummy = ListNode(-1)
-    p=dummy
-    carry =0
+    p1, p2 = l1, l2
+    p = dummy = ListNode(-1)
+    carry = 0
     #! 固定三个东西 进位
-    while p1!=None or p2!=None or carry>0:
+    while p1 != None or p2 != None or carry > 0:
         val = carry
-        if p1!=None:
+        if p1 != None:
             val += p1.val
-            p1=p1.next
-        if p2!=None:
+            p1 = p1.next
+        if p2 != None:
             val += p2.val
-            p2=p2.next
+            p2 = p2.next
         carry = val // 10
         val = val % 10
-        p.next= ListNode(val)
-        p=p.next
+        p.next = ListNode(val)
+        p = p.next
     return dummy.next
 
-#-n 反转链表
-def reverse(self, head: ListNode) -> ListNode:
+# -n 反转链表
+
+
+def reverse(head: ListNode) -> ListNode:
     pre, cur = None, head
     while cur:
-        next_node = cur.next
+        next = cur.next
         cur.next = pre
-        pre = cur
-        cur = next_node
+        #? 集体右移
+        pre, cur = cur, next
 
-#-n 合并两个有序链表
+
+def reverse_v2(head: ListNode) -> ListNode:
+    if head is None or head.next is None:
+        return head
+    last = reverse_v2(head.next)  # ? 后面部分先翻转
+    head.next.next = head
+    head.next = None  # ? 断开与后面部分的关系
+    return last
+
+#~ 合并两个有序链表
 def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
-    dummy = ListNode(-1)
-    p = dummy
-    p1 = l1
-    p2 = l2
-
-    while p1 and p2: 
-        # 比较 p1 和 p2 两个指针
-        # 将值较小的的节点接到 p 指针
-        if p1.val > p2.val:
+    p = dummy = ListNode(-1)  # ? P是实际遍历的，dummy是最后return的
+    p1, p2 = l1, l2
+    while p1 and p2:
+        if p1.val > p2.val:  # ? 比较 p1 和 p2 两个指针 将值较小的的节点接到 p 指针
             p.next = p2
             p2 = p2.next
         else:
             p.next = p1
             p1 = p1.next
-        # p 指针不断前进
-        p = p.next
+        p = p.next  # p指针不断前进
 
     if p1:
         p.next = p1
-
     if p2:
         p.next = p2
-
     return dummy.next
+
+# -N 148. 排序链表
+def sortList(self, head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head  # termination.
+    # cut the LinkedList at the mid index.
+    slow, fast = head, head.next
+    while fast and fast.next:
+        fast, slow = fast.next.next, slow.next
+    mid, slow.next = slow.next, None  # save and cut.
+    # recursive for cutting.
+    left, right = self.sortList(head), self.sortList(mid)
+    # merge `left` and `right` 两个有序链表
+    h = res = ListNode(0)
+    while left and right:
+        if left.val < right.val:
+            h.next, left = left, left.next
+        else:
+            h.next, right = right, right.next
+        h = h.next
+    h.next = left if left else right
+    return res.next
 
 
 def longestValidParentheses(self, s: str) -> int:
@@ -98,26 +121,21 @@ def longestValidParentheses(self, s: str) -> int:
                 # flag = i
                 stack.append(i)
     return max_len
-    
-#-n 合并k个有序链表
+
+# -n 合并K个有序链表
 def mergeKLists(self, lists: List[ListNode]) -> ListNode:
     import heapq
-    # 创建一个链表头节点，并将其初始值设置为0
-    dummy = ListNode(0)
-    # 创建一个指针，用于指向头节点
-    p = dummy
-    # 创建一个列表，用于存储每个链表的头节点
-    head = []
+    dummy = ListNode(0)    # 创建一个链表头节点，并将其初始值设置为0
+    p = dummy     # 创建一个指针，用于指向头节点
+    head = []     # 创建一个列表，用于存储每个链表的头节点
     # 遍历每个链表
     for i in range(len(lists)):
-        # 如果链表中存在节点，则将其存入列表
-        if lists[i] :
-            # 将列表中的元素添加到列表中
+        if lists[i]:  # 如果链表中存在节点，则将其存入列表
             heapq.heappush(head, (lists[i].val, i))
-            # 将链表中的节点设置为下一个节点
-            lists[i] = lists[i].next
-    # 当列表中存在节点时，开始循环
-    while head:
+            # 将列表中的元素添加到列表中
+            lists[i] = lists[i].next            # 将链表中的节点设置为下一个节点
+
+    while head:     # 当列表中存在节点时，开始循环
         # 获取列表中的最小值
         val, idx = heapq.heappop(head)
         # 将最小值添加到链表头节点的下一个节点中
@@ -127,13 +145,14 @@ def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         # 如果链表中存在节点，则将其存入列表
         if lists[idx]:
             # 将列表中的元素添加到列表中
-            # 将列表中的元素添加到列表中
             heapq.heappush(head, (lists[idx].val, idx))
             # 将链表中的节点设置为下一个节点
             lists[idx] = lists[idx].next
     # 返回链表头节点
     return dummy.next
-#-n 旋转链表
+
+# -n 旋转链表
+
 def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     if not head:
         return head
@@ -141,38 +160,39 @@ def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     cur = head
     while cur.next:
         cur = cur.next
-        length+=1
+        length += 1
     cur.next = head
-    length += 1#计算链表长度
+    length += 1  # 计算链表长度
     k = k % length
-    k = length - k #找到断点
+    k = length - k  # 找到断点
     cnt = 0
     cur = head
     dummy = ListNode(None)
     while cur:
-        cnt+=1
+        cnt += 1
         if cnt == k:
-            dummy = cur.next #存头节点
-            cur.next = None #将断点变成尾部节点
+            dummy = cur.next  # 存头节点
+            cur.next = None  # 将断点变成尾部节点
             break
         cur = cur.next
     return dummy
 
 
 def count(val):
-    zerosum=0
+    zerosum = 0
     while val:
-        if val%10 == 0:
-            zerosum+=1
-            val=val//10
+        if val % 10 == 0:
+            zerosum += 1
+            val = val//10
         else:
             break
-    return val,zerosum
+    return val, zerosum
 
-if __name__ =='__main__':
-    lists = [[1,4,5],[1,3,4],[2,6]]
+
+if __name__ == '__main__':
+    lists = [[1, 4, 5], [1, 3, 4], [2, 6]]
     # mergeKLists
     print(count(4))
-    n=10
-    choices = [x for x in reversed(range(1,n+1))]
+    n = 10
+    choices = [x for x in reversed(range(1, n+1))]
     print(choices)

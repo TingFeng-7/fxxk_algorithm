@@ -35,9 +35,11 @@
 
 # print('res',maxl)
 
-n=10
-res= []
 import math
+n = 10
+res = []
+
+
 def is_prime(n):
     if n <= 1:
         return False
@@ -51,9 +53,10 @@ def is_prime(n):
             return False
     return True
 
+
 for i in range(2, n//2+1):
     if not is_prime(i) or not is_prime(n-i):
         continue
 
-    res.append([i , n-i])
+    res.append([i, n-i])
 print(res)

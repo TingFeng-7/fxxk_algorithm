@@ -1,22 +1,3 @@
-# ## 
-# s=input().strip()
-# k=int(input())
-# print(f'input : {s}')
-# print(f'input : {k}')
-# A=[]
-# for i in range(len(s)-k):
-#     A.append(s[i:i+k])
-# if k==1:
-#     A=sorted(A,key=lambda x:(x[0]))
-# elif k==2:
-#     A=sorted(A,key=lambda x:(x[0],x[1]))
-# elif k==3:
-#     A=sorted(A,key=lambda x:(x[0],x[1],x[2]))
-# elif k==4:
-#     A=sorted(A,key=lambda x:(x[0],x[1],x[2],x[3]))
-# else:
-#     A=sorted(A,key=lambda x:(x[0],x[1],x[2],x[3],x[4]))
-# print(A[0])
 
 # -n 1.测试组数不固定，每组三行数据
 # input = int(input())
@@ -40,7 +21,7 @@
 #     elif name==2:
 #         tmp.sort(reverse=True) #act #cheack
 #         power[:k] = tmp
-#         # print(f'name:{name}:从大到小 {power}') 
+#         # print(f'name:{name}:从大到小 {power}')
 #     operations-=1
 
 # s=""
@@ -62,13 +43,13 @@
 #         abc = list(map(int, input().split(" ")))
 #         a, b, c = abc[0], abc[1], abc[2]
 #         print(str(a)+'_'+str(b)+'_'+str(c))
-inputs = input().split(" ") #字符串
-inp = list(map(int, inputs)) #转为列表
 
+inputs = input().split(" ")  # ! 字符串
+inp = list(map(int, inputs))  # ! 将每个str转为int，形成链表
 
-print(inputs, inp) #输入转为列表
+print(inputs, inp)  # 输入转为列表
 L, R = inputs[0], inputs[1]
-print(L+R)
+print(L + R)
 # digits=0
 # if R<10:
 #     print(str(R))
@@ -78,5 +59,5 @@ print(L+R)
 #         tmp = tmp//10
 #         digits+=1
 #     digits-=1
-#     print(f'{(pow(10,digits)-1)}* 9 *{digits}')    
+#     print(f'{(pow(10,digits)-1)}* 9 *{digits}')
 #     print(str((pow(10,digits)-1)*9*(digits-1)))
