@@ -32,7 +32,7 @@ class Solution:
         l, r, maxl = 0, 0, 0
         while r < n:
             c = s[r]
-            hashmap[c] = hashmap.get(c, 0) + 1
+            hashmap[c] = hashmap[c] + 1
             r += 1
             while hashmap[c] >= 2: #?收缩条件,就是这个hash的value要大于2，（有点占空间
                 del_ch = s[l]
@@ -40,7 +40,7 @@ class Solution:
                 hashmap[del_ch] -= 1
             maxl = max(maxl, r-l)
         return maxl
-
+    #~3.无重复最长子串 （滑动窗口） 元素出现的 位置
     def lengthOfLongestSubstring_v2(self, s: str) -> int:
         start, maxl = -1, 0 # -1 很微妙
         d = {}  # 元素出现的 位置

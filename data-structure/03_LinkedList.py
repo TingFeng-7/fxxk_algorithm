@@ -15,7 +15,7 @@ def end_of_first_half(self, head):
         slow = slow.next
     return slow
 
-# -n 02. 两数相加 (链表版)
+#~~ 02. 两数相加 (链表版)
 def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
     p1, p2 = l1, l2
     p = dummy = ListNode(-1)
@@ -35,9 +35,7 @@ def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optio
         p = p.next
     return dummy.next
 
-# -n 反转链表
-
-
+#~~ 反转链表
 def reverse(head: ListNode) -> ListNode:
     pre, cur = None, head
     while cur:
@@ -54,6 +52,36 @@ def reverse_v2(head: ListNode) -> ListNode:
     head.next.next = head
     head.next = None  # ? 断开与后面部分的关系
     return last
+
+# ~~ 92. 反转链表 II
+def reverseBetween( head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+    p0 = dummy = ListNode(next=head)
+    for _ in range(left - 1):
+        p0 = p0.next #~ p0 到达断点的前面
+
+    pre = None
+    cur = p0.next
+    for _ in range(right - left + 1):
+        nxt = cur.next
+        cur.next = pre  # 每次循环只修改一个 next，方便大家理解
+        pre = cur
+        cur = nxt
+
+    # 见视频
+    p0.next.next = cur
+    p0.next = pre
+    return dummy.next
+# ~~ 82. 删除排序链表中的重复元素 II
+def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    cur = dummy = ListNode(next=head)
+    while cur.next and cur.next.next:
+        val = cur.next.val
+        if cur.next.next.val == val:
+            while cur.next and cur.next.val == val:
+                cur.next = cur.next.next # 一直跳过，一直前进
+        else:
+            cur = cur.next
+    return dummy.next
 
 #~ 合并两个有序链表
 def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
@@ -74,7 +102,7 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
         p.next = p2
     return dummy.next
 
-# -N 148. 排序链表
+#~~ 148. 排序链表
 def sortList(self, head: ListNode) -> ListNode:
     if not head or not head.next:
         return head  # termination.
@@ -122,7 +150,7 @@ def longestValidParentheses(self, s: str) -> int:
                 stack.append(i)
     return max_len
 
-# -n 合并K个有序链表
+#~~ 合并K个有序链表
 def mergeKLists(self, lists: List[ListNode]) -> ListNode:
     import heapq
     dummy = ListNode(0)    # 创建一个链表头节点，并将其初始值设置为0
@@ -151,7 +179,7 @@ def mergeKLists(self, lists: List[ListNode]) -> ListNode:
     # 返回链表头节点
     return dummy.next
 
-# -n 旋转链表
+#~~ 旋转链表
 
 def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     if not head:

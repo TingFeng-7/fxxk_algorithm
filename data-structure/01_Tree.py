@@ -7,7 +7,29 @@ class TreeNode:
 
 #~ 1.遍历题型
 class TraverseTree:
-
+    #@ 199
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        if not root: return []
+        #跟结点入queue
+        queue = [root]
+        res = []
+        while queue:
+            #只需要对该层最后一个元素入列表
+            res.append([node.val for node in queue][-1])
+            #存储当前层的孩子节点列表
+            ll = []
+            #对当前层的每个节点遍历
+            for node in queue:
+                #如果左子节点存在，入队列
+                if node.left:
+                    ll.append(node.left)
+                #如果右子节点存在，入队列
+                if node.right:
+                    ll.append(node.right)
+            #后把queue更新成下一层的结点，继续遍历下一层
+            queue = ll
+        return res
+    
     # 在【100. 相同的树】的基础上稍加改动
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if p == None and q == None:
@@ -21,7 +43,7 @@ class TraverseTree:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return self.isSameTree(root.left, root.right)
     
-    #~236. 最近公共祖先 （先序遍历，中左右
+    #~ 236. 最近公共祖先 （先序遍历，中左右
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
         if not root:
             return None

@@ -31,3 +31,20 @@ class Interval_Solution:
                 ans += 1
             # start = e[0]
         return ans
+    
+    # 763. 划分字母区间
+    def partitionLabels(self, S: str) -> List[int]:
+        hashmap = [0] * 27 # hash数组记录每个字符最后出现的位置
+        for i in range(len(S)):
+            hashmap[ord(S[i]) - ord('a')] = i
+        
+        result = []
+        left = 0
+        right = 0
+        for i in range(len(S)):
+            right = max(right, hashmap[ord(S[i]) - ord('a')]) # 找到最远边界
+            if i == right:
+                result.append(right - left + 1)
+                left = i + 1
+                
+        return result

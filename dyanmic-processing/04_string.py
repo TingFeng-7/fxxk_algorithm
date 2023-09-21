@@ -57,8 +57,6 @@ def lengthOfLIS(self, nums: List[int]) -> int:
     return res
 
 # -n 31.下一个全排列
-
-
 def nextPermutation(self, nums):
     n = len(nums)
     if n <= 1:
