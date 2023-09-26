@@ -1,5 +1,7 @@
 from typing import List
 
+#@ 参考资料
+# https://leetcode.cn/problems/short-encoding-of-words/solutions/175331/python3-hou-zhui-shu-mo-ban-ti-820-dan-ci-de-ya-su/
 
 class Trie:
     def __init__(self):

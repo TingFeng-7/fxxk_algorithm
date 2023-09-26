@@ -49,11 +49,8 @@ class Solution:
         return ans
 
     def strStr(self, ss: str, pp: str) -> int:
-        n = len(ss)
-        m = len(pp)
-        s = list(ss)
-        p = list(pp)
-
+        n, m = len(ss), len(pp)
+        s, p = list(ss), list(pp)
         # 枚举原串的「发起点」
         for i in range(0, n - m + 1):
             a = i
@@ -62,8 +59,7 @@ class Solution:
             while b < m and s[a] == p[b]:
                 a += 1
                 b += 1
-            # 如果能够完全匹配，返回原串的「发起点」下标
-            if b == m:
+            if b == m:             # 如果能够完全匹配，返回原串的「发起点」下标
                 return i
         return -1
 

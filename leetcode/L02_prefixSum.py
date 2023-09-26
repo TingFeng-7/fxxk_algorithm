@@ -20,7 +20,7 @@ class Solution:
 
 
 class Solution01:
-    # ? 528  https://leetcode.cn/problems/random-pick-with-weight/description/
+    #`` 528  https://leetcode.cn/problems/random-pick-with-weight/description/
     def __init__(self, w: List[int]):
         n = len(w)
         self.prefix_sum = [0] * n
