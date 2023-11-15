@@ -9,15 +9,13 @@ class LRUCache:
 
     def get(self, key: int) -> int:
         if key not in self.cache:
-            # 返回-1表示查找失败
-            return -1
+            return -1     # 返回-1表示查找失败
         self.cache.move_to_end(key)  # 将当前访问的节点移到双向链表尾部
         return self.cache[key]
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
-            # 修改key对应的value值
-            self.cache[key] = value
+            self.cache[key] = value   # 修改key对应的value值
             self.cache.move_to_end(key)  # 将当前访问的节点移到双向链表尾部
             return
 

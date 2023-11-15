@@ -10,28 +10,37 @@ class TraverseTree:
     #@ 199
     def rightSideView(self, root: TreeNode) -> List[int]:
         if not root: return []
-        #跟结点入queue
+        #根结点入queue
         queue = [root]
         res = []
         while queue:
             #只需要对该层最后一个元素入列表
             res.append([node.val for node in queue][-1])
             #存储当前层的孩子节点列表
-            ll = []
+            tmp_store = []
             #对当前层的每个节点遍历
             for node in queue:
                 #如果左子节点存在，入队列
                 if node.left:
-                    ll.append(node.left)
+                    tmp_store.append(node.left)
                 #如果右子节点存在，入队列
                 if node.right:
-                    ll.append(node.right)
+                    tmp_store.append(node.right)
             #后把queue更新成下一层的结点，继续遍历下一层
-            queue = ll
+            queue = tmp_store
         return res
     
-    # 在【100. 相同的树】的基础上稍加改动
+    # @100. 相同的树 的基础上稍加改动
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        """_summary_
+
+        Args:
+            p (Optional[TreeNode]): a tree
+            q (Optional[TreeNode]): b tree
+
+        Returns:
+            bool: _description_
+        """        
         if p == None and q == None:
             return True
         if p is None or q is None:
@@ -39,44 +48,53 @@ class TraverseTree:
         return p.val == q.val and \
             self.isSameTree(p.left, q.right) and self.isSameTree(p.right, q.left) #两个左对左，现在变左对右
     
-    #~ 101. 对称二叉树
+    # ~101. 对称二叉树
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return self.isSameTree(root.left, root.right)
     
-    #~ 236. 最近公共祖先 （先序遍历，中左右
+    # ~236. 最近公共祖先 先序遍历，中左右
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+        """ find lowest common ancestor
+        
+        Args:
+            root (TreeNode): root node 
+            p (TreeNode): a node
+            q (TreeNode): b node
+        
+        Returns:
+            TreeNode: _description_
+        """        
         if not root:
             return None
-        if root == p or root == q: # case1：p,q其中一个是根节点
+        if root == p or root == q: # case1：p,q 其中一个是根节点
             return root
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
-        if left and right: # case2：p,q 分居左右两边
+        if left and right: # case2：left,right都有值 p,q 分居左右两边, 
             return root
         elif not left: # case3：p,q 暂时处在同一边
             return right  # 只有左边找到
         else:
             return left  # 只有右边找到
     
-    # -n 22.括号生成
+    # ~22.括号生成
     def generateParenthesis(self, n: int) -> List[str]:  # 回溯 + 剪枝
-        sz = 2 * n
-        res = []
+        sz, res = 2*n, []
 
-        def dfs(path, l_num, r_num):
-            if l_num > n or r_num > n or r_num > l_num:
+        def dfs(path, lb_num, rl_num): #lb:left bracket
+            if lb_num > n or rl_num > n or rl_num > lb_num:
                 return
-            if len(path) == sz and l_num == r_num:
+            if len(path) == sz and lb_num == rl_num:
                 res.append(path[:])
                 return
-            # print(l_num, r_num)
-            dfs(path+'(', l_num+1, r_num)
-            dfs(path+')', l_num, r_num+1)
+            # print(lb_num, rl_num)
+            dfs(path+'(', lb_num+1, rl_num)
+            dfs(path+')', lb_num, rl_num+1)
 
         dfs("", 0, 0)
         return res
 
-#~ 2. 构造题型
+# ~2. 构造题型
 class ConstructTree(object):
 	def buildTree(self, preorder, inorder):
 		if not (preorder and inorder):

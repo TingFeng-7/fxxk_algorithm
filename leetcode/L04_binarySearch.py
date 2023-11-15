@@ -14,7 +14,7 @@ class Solution:
             elif ord(letters[mid]) - ord(target) >= 1:  # 收缩区间
                 r = mid
         return letters[r]
-    # 33
+    # @ 33
     def search(self, nums: List[int], target: int) -> int:
         if not nums:
             return -1
@@ -96,22 +96,21 @@ class Solution:
         midVal2 = nums2[j + half_k - 1] if j + \
             half_k - 1 < len(nums2) else float('inf')
         if midVal1 < midVal2:  # 比较两个 大哥谁更小
-            # 已经派出了 half_k个元素
+            # 已经派出了 HALF K个元素
             return self.findKth(nums1, i + half_k, nums2, j, k - half_k)
         else:
             return self.findKth(nums1, i, nums2, j + half_k, k - half_k)
+        
     # ~ 240. 搜索二维矩阵 II
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         r = len(matrix) # 行
         c = len(matrix[0]) # 列
-        # 排除只有一行的情况
+        # 排除只有单行 单列 的情况
         if r == 1:
             return target in matrix[0]
-        # 排除只有一列的情况
         if c == 1:
             return target in [i for j in matrix for i in j]
-        # 以右上角元素为起点
-        i,j = 0,c-1
+        i, j = 0, c-1   # 以右上角元素为起点
         while j >= 0 and i < r:
             if matrix[i][j] == target:
                 return True

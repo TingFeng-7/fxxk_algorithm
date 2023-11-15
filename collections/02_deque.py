@@ -47,17 +47,26 @@ class MaxQueue:
 #~ 239. 滑动窗口最大值
 import collections
 def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        deque = collections.deque()
-        res, n = [], len(nums)
-        for i, j in zip(range(1 - k, 1 - k + n), range(n)):
-            # 1. 删除 deque 中对应的 nums[i-1]
-            print(i, j)
-            if i > 0 and deque[0] == nums[i - 1]: # 最大值等于上一个左边界的时候
-                deque.popleft()
-            # 2. 保持 deque 非递减， 相同的如 33
-            while deque and deque[-1] < nums[j]:
-                deque.pop()
-            deque.append(nums[j])
-            # 3. 记录窗口最大值
-            if i >= 0: res.append(deque[0])
-        return res
+    """_summary_
+
+    Args:
+        nums (List[int]): array
+        k (int): window size
+
+    Returns:
+        List[int]: _description_
+    """        
+    deque = collections.deque()
+    res, n = [], len(nums)
+    for i, j in zip(range(1 - k, 1 - k + n), range(n)):
+        #@ 1. 删除 deque 中对应的 nums[i-1]
+        print(f"window left:{i}, right:{j}")
+        if i > 0 and deque[0] == nums[i - 1]: # 最大值等于上一个左边界的时候
+            deque.popleft()
+        #@ 2. 保持 deque 非递减， 相同的如 33
+        while deque and deque[-1] < nums[j]:
+            deque.pop()
+        deque.append(nums[j])
+        #@ 3. 记录窗口最大值
+        if i >= 0: res.append(deque[0])
+    return res

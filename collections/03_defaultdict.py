@@ -3,7 +3,7 @@ from collections import defaultdict
 
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        arr = [0] * 26
+        arr = [0] * 26 # 26个数组
         for x in magazine:
             arr[ord(x) - ord('a')] += 1  #* 1.ord()返回字符的ascii
         for x in ransomNote:
@@ -14,7 +14,7 @@ class Solution:
         return True
 
     def canConstruct01(self, ransomNote: str, magazine: str) -> bool:
-        hashmap = defaultdict(int)  # ? # 哈希表 （带默认值
+        hashmap = defaultdict(int)  # 带默认值的哈希表
         for x in magazine:
             hashmap[x] += 1
         for x in ransomNote:
@@ -25,7 +25,7 @@ class Solution:
                 hashmap[x] -= 1
         return True
 
-    #~3.无重复最长子串 （滑动窗口）
+    #~3.无重复最长子串 （滑动窗口 模版题）
     def lengthOfLongestSubstring(self, s: str) -> int:
         n = len(s)
         hashmap = defaultdict()
@@ -54,7 +54,7 @@ class Solution:
                     maxl = i-start
         return maxl
 
-    #~ 查找第一个字符
+    #~ 第一个独一无二的字符
     def firstUniqChar(self, s: str) -> int:
         # todo 3. 计数器 统计每个出现的频率
         from collections import Counter

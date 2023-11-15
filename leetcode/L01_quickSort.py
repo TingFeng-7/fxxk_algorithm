@@ -28,15 +28,26 @@ def randomPartition(arr: List[int], low: int, high: int) -> int:
 
 # ?3. 返回第K个元素
 def topKSplit(arr: List[int], low: int, high: int, k: int) -> int:
+    """_summary_
+
+    Args:
+        arr (List[int]): array
+        low (int): left bound
+        high (int): right bound
+        k (int): _description_
+
+    Returns:
+        int: _description_
+    """    
     p = randomPartition(arr, low, high)
-    if p == k - 1:                                      # 第k小元素的下标为k-1
+    if p == k - 1:                             # 第 K 小元素的下标为k-1
         return arr[p]  # !! 找到即返回
     elif p < k - 1:
-        return topKSplit(arr, p+1, high, k)           # 递归对p右侧元素进行排序
+        return topKSplit(arr, p+1, high, k)   # 递归对p右侧元素进行排序
     else:
-        return topKSplit(arr, low, p-1, k)            # 递归对p左侧元素进行排序
+        return topKSplit(arr, low, p-1, k)    # 递归对p左侧元素进行排序
 
-# @ 随机快速排序 
+# @ 随机快排 一个函数搞定 
 def randomized_quicksort(arr):
     if len(arr) <= 1:
         return arr
@@ -61,19 +72,19 @@ def search(nums: List[int], target: int) -> int:
         mid = (l + r) // 2
         if nums[mid] == target:
             return mid
-        if nums[0] <= nums[mid]:  # 1 left ... mid 升序
-            if nums[0] <= target < nums[mid]:
+        if nums[l] <= nums[mid]:  # 1 left-mid 升序
+            if nums[l] <= target < nums[mid]:
                 r = mid - 1
             else:
                 l = mid + 1
-        else:
-            if nums[mid] < target <= nums[len(nums) - 1]:   # 2 right ... mid 升序
+        else:   # 2 mid-right 升序
+            if nums[mid] < target <= nums[len(nums) - 1]: 
                 l = mid + 1
             else:
                 r = mid - 1
     return -1
 
-# @-n 第K大元素
+# @ 第K大元素 就是递增数组的 n-(k-1)
 def findKthLargest(nums: List[int], k: int) -> int:
     n = len(nums)
     # 第k大元素的坐标：代入n就理解了

@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    #~ 416. 分割等和子集
+    # %% 416. 分割等和子集
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         target += sum(nums)
         if target < 0 or target % 2:

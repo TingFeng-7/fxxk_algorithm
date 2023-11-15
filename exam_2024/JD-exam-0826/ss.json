@@ -1,0 +1,296 @@
+{
+    "all_paper_num": {
+        "all_count": 52,
+        "English Journal count": 37,
+        "Chinese Journal count": 1,
+        "Conference count": 14
+    },
+    "English Journal": {
+        "1区 Citescore:10.90 审稿周期:约4.0个月 IEEE Transactions on Geoscience and Remote Sensing": [
+            "共1篇",
+            {
+                "LO-Det: Lightweight Oriented Object Detection in Remote Sensing Images": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1m3t0gu03q7x08009n4g0gq0dp418603&site=xueshu_se"
+            }
+        ],
+        "1区 Citescore:18.20 审稿周期:约8.1个月 IEEE Transactions on Image Processing": [
+            "共2篇",
+            {
+                "SAMNet: Stereoscopically Attentive Multi-Scale Network for Lightweight Salient Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=151c0e80ya5e0ey0s7350pp0f9361668&site=xueshu_se"
+            },
+            {
+                "Data-Level Recombination and Lightweight Fusion Scheme for RGB-D Salient Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1t100450yk6p04n05a7r0ab04x513127&site=xueshu_se"
+            }
+        ],
+        "1区 Citescore:21.10 审稿周期:约6.0个月 Computers in Industry": [
+            "共1篇",
+            {
+                "Interactive Process Automation based on lightweight object detection in manufacturing processes": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1n4r0cv0fx2102d0je6d0v20te523761&site=xueshu_se"
+            }
+        ],
+        "1区 Citescore:21.90 审稿周期:一般,3-8周 IEEE Transactions on Neural Networks and Learning Systems": [
+            "共1篇",
+            {
+                "Lightweight Deep Neural Network for Joint Learning of Underwater Object Detection and Color Conversion": "https://xueshu.baidu.com/usercenter/paper/show?paperid=125e0m705q7x0vc0ht6c04r0vt033635&site=xueshu_se"
+            }
+        ],
+        "1区 Citescore:22.30 审稿周期:无记录 IEEE Transactions on Cybernetics": [
+            "共1篇",
+            {
+                "Lightweight Salient Object Detection via Hierarchical Visual Perception Learning": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1q6y0tf0a1620t907k590a708y731290&site=xueshu_se"
+            }
+        ],
+        "2区 Citescore:10.80 审稿周期:约5.7个月 Neurocomputing": [
+            "共3篇",
+            {
+                "Lightweight Adversarial Network for Salient Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=132q06s0cr7w0mv0hn5k0cf0sm697738&site=xueshu_se"
+            },
+            {
+                "Coarse-to-fine object detection in unmanned aerial vehicle imagery using lightweight convolutional neural network and deep motion sa...": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1g360vu0ym770ch0am360rn0tx798896&site=xueshu_se"
+            },
+            {
+                "Coarse-to-fine object detection in unmanned aerial vehicle imagery using lightweight convolutional neural network and deep motion sa...": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1m7j02u0q46t00r0rm0m0080br621524&site=xueshu_se"
+            }
+        ],
+        "2区 Citescore:5.60 审稿周期:约3.0个月 Infrared Physics & Technology": [
+            "共1篇",
+            {
+                "Infrared Salient Object Detection based on Global Guided Lightweight Non-Local Deep Features": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1t0x0xh0s8140xu0yh4j0jg0p0520854&site=xueshu_se"
+            }
+        ],
+        "2区 Citescore:6.30 审稿周期:约3.0个月 Journal of Physics": [
+            "共2篇",
+            {
+                "A lightweight convolutional network for infrared object detection and tracking": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1h1x08y0h82b0jt0au4x0tj0gd452419&site=xueshu_se"
+            },
+            {
+                "Real-time indoor semantic map construction combined with the lightweight object detection network": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1k6808a0es2a0jh02a780aa0gd357536&site=xueshu_se"
+            }
+        ],
+        "2区 Citescore:7.90 审稿周期:一般,3-8周 Remote Sensing": [
+            "共4篇",
+            {
+                "A Lightweight Object Detection Framework for Remote Sensing Images": "https://xueshu.baidu.com/usercenter/paper/show?paperid=127508203e150mv0cy4p06c0jk029050&site=xueshu_se"
+            },
+            {
+                "Dynamic Object Detection Algorithm Based on Lightweight Shared Feature Pyramid": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1r5b08g0ud3c08a06w5a00806u315921&site=xueshu_se"
+            },
+            {
+                "Lightweight Underwater Object Detection Based on YOLO v4 and Multi-Scale Attentional Feature Fusion": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1p050rg0nt5k0gp02w7202x0nc485204&site=xueshu_se"
+            },
+            {
+                "A Lightweight Keypoint-Based Oriented Object Detection of Remote Sensing Images": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1v1h0x60786c0v401y410cq0tn455124&site=xueshu_se"
+            }
+        ],
+        "3区 Citescore:3.90 审稿周期:20 Weeks Computational Intelligence and Neuroscience": [
+            "共1篇",
+            {
+                "Lightweight Object Detection Ensemble Framework for Autonomous Vehicles in Challenging Weather Conditions": "https://xueshu.baidu.com/usercenter/paper/show?paperid=173u0g70am1x0va0hy4608u0vd559848&site=xueshu_se"
+            }
+        ],
+        "3区 Citescore:6.80 审稿周期:约1.7个月 Sensors": [
+            "共1篇",
+            {
+                "Lightweight Feature Enhancement Network for Single-Shot Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1x480e802v7c06w0p35t08w0c6449733&site=xueshu_se"
+            }
+        ],
+        "3区 Citescore:7.30 审稿周期:约10.5个月 Image and vision computing": [
+            "共1篇",
+            {
+                "Lightweight and computationally faster Hypermetropic Convolutional Neural Network for small size object detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1d7k0gy0da7w00f0fv660ck034427996&site=xueshu_se"
+            }
+        ],
+        "3区 Citescore:7.80 审稿周期:约3.0个月 IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing": [
+            "共1篇",
+            {
+                "Lightweight Oriented Object Detection Using Multiscale Context and Enhanced Channel Attention in Remote Sensing Images": "https://xueshu.baidu.com/usercenter/paper/show?paperid=172h0e80py6j0g50rm6m0tm0ec746030&site=xueshu_se"
+            }
+        ],
+        "3区 Citescore:9.10 审稿周期:42 Weeks Alexandria Engineering Journal": [
+            "共1篇",
+            {
+                "Automated object detection on aerial images for limited capacity embedded device using a lightweight CNN model": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1s4a0rn0q2120ak03s2x0ej09y369950&site=xueshu_se"
+            }
+        ],
+        "4区 Citescore:1.50 审稿周期:无记录 Laser & Optoelectronics Progress": [
+            "共1篇",
+            {
+                "Object Detection Method Based on Improved YOLO Lightweight Network": "https://xueshu.baidu.com/usercenter/paper/show?paperid=110q0tx0au7h08w0jx1d00p0d2417347&site=xueshu_se"
+            }
+        ],
+        "4区 Citescore:2.80 审稿周期:较慢,6-12周 International Journal of Pattern Recognition and Artificial Intelligence": [
+            "共2篇",
+            {
+                "Lightweight Hardware Architecture for Object Detection in Driver Assistance Systems": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1s650vm03q710tx0f91c02r0un126063&site=xueshu_se"
+            },
+            {
+                "A Lightweight SE-YOLOv3 Network for Multi-Scale Object Detection in Remote Sensing Imagery": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1x340ca0yr4k0p4006360r9099332834&site=xueshu_se"
+            }
+        ],
+        "4区 Citescore:3.40 审稿周期:约4.5个月 Journal of Applied Remote Sensing": [
+            "共1篇",
+            {
+                "DF-SSD: a deep convolutional neural network-based embedded lightweight object detection framework for remote sensing imagery": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1t610r40bs36024074130xj0nm540523&site=xueshu_se"
+            }
+        ],
+        "未收录 Citescore:1.50 审稿周期:无记录 Computer Science": [
+            "共1篇",
+            {
+                "Lightweight SSD Network for Real-time Object Detection in Automotive Videos": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1x490jh01y0c0450bx0n0aa0ve411082&site=xueshu_se"
+            }
+        ],
+        "未收录 Citescore:4.60 审稿周期:无记录 Applied Sciences": [
+            "共2篇",
+            {
+                "DLMFCOS: Efficient Dual-Path Lightweight Module for Fully Convolutional Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=145f0aw0sh2u0800ps6d0v8027267373&site=xueshu_se"
+            },
+            {
+                "Lightweight Attention Pyramid Network for Object Detection and Instance Segmentation": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1b6g0pq0b5540a10jx0h0cp07d449930&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 Applied Imagery Pattern Recognition": [
+            "共1篇",
+            {
+                "Using Robust Networks to Inform Lightweight Models in Semi-Supervised Learning for Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1a3y04s06w180cv0cx010cj04j398486&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 BMVC": [
+            "共1篇",
+            {
+                "BMNet: A Reconstructed Network for Lightweight Object Detection via Branch Merging": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1e0b06r0da6p0my0uk0906v0ac773003&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 CAAI Artificial Intelligence Research": [
+            "共1篇",
+            {
+                "LWD-3D: Lightweight Detector Based on Self-Attention for 3D Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=103s0g504h2h0010rq6j0jy0e9232786&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 ICIAI 2020": [
+            "共1篇",
+            {
+                "An Object Detection Algorithm Based on Attention Mechanism and Lightweight Network (AMLN)": "https://xueshu.baidu.com/usercenter/paper/show?paperid=161s0cq0hw0t0jn0s11102a0vm597662&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 ICMR '20": [
+            "共1篇",
+            {
+                "Optimizing Queries over Video via Lightweight Keypoint-based Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=101r0md0yg1s0vy0jh1k0rc0pg742562&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 IEEE transactions on systems, man, and cybernetics. Systems": [
+            "共1篇",
+            {
+                "Modular Lightweight Network for Road Object Detection Using a Feature Fusion Approach": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1j220au000460e80n27v0mw0k8324637&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 Image and Signal Processing for Remote Sensing XXV": [
+            "共1篇",
+            {
+                "Training lightweight network from scratch for efficient object detection in aerial images": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1q0400n0e75u0ae0wk2g0g306k738850&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 IoTDI '21": [
+            "共1篇",
+            {
+                "milliEye: A Lightweight mmWave Radar and Camera Fusion System for Robust Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1g140eg0mw610vt051630es0kt451400&site=xueshu_se"
+            }
+        ],
+        "未收录 无Citescore 审稿周期:无记录 SAE WCX Digital Summit": [
+            "共1篇",
+            {
+                "Object Detection Method of Autonomous Vehicle Based on Lightweight Deep Learning": "https://xueshu.baidu.com/usercenter/paper/show?paperid=161m0jj0sm2c0a208g6h0xe0hk735175&site=xueshu_se"
+            }
+        ]
+    },
+    "Chinese Journal": {
+        "系统工程与电子技术:英文版": [
+            "共1篇",
+            {
+                "Low-altitude small-sized object detection using lightweight feature-enhanced convolutional neural network": "https://xueshu.baidu.com/usercenter/paper/show?paperid=126a0xr0wx1h0ax0wt720cg097179616&site=xueshu_se"
+            }
+        ]
+    },
+    "Conference": {
+        "2019 IEEE International Conference on Image Processing (ICIP)": [
+            "共2篇",
+            {
+                "Joint Lightweight Object Tracking and Detection for Unmanned Vehicles": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1s020ep0rh7n02p0mp2d0m00af385773&site=xueshu_se"
+            },
+            {
+                "FFBNet : Lightweight Backbone for Object Detection Based Feature Fusion Block": "https://xueshu.baidu.com/usercenter/paper/show?paperid=11050r30g53u0420xa6v0cs0mf398320&site=xueshu_se"
+            }
+        ],
+        "2021 IEEE Asia-Pacific Conference on Image Processing, Electronics and Computers (IPEC)": [
+            "共1篇",
+            {
+                "A lightweight object detection algorithm based on YOLOv3 for vehicle and pedestrian detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=173802f0r62e0060hp6n0t60ny520453&site=xueshu_se"
+            }
+        ],
+        "ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)": [
+            "共1篇",
+            {
+                "Lightdet: A Lightweight and Accurate Object Detection Network": "https://xueshu.baidu.com/usercenter/paper/show?paperid=125n0vx0xx1n0tj0vh040p90mw497392&site=xueshu_se"
+            }
+        ],
+        "IEEE International System-on-Chip Conference": [
+            "共1篇",
+            {
+                "Pvalite CLN: Lightweight Object Detection with Classfication and Localization Network": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1u620pt0tm3h0420375k0vh0b2337102&site=xueshu_se"
+            }
+        ],
+        "2019 16th Conference on Computer and Robot Vision (CRV)": [
+            "共1篇",
+            {
+                "aUToTrack: A Lightweight Object Detection and Tracking System for the SAE AutoDrive Challenge": "https://xueshu.baidu.com/usercenter/paper/show?paperid=101h06c0te6r08e0270y0py0ct349358&site=xueshu_se"
+            }
+        ],
+        "2019 IEEE International Conference on Integrated Circuits, Technologies and Applications (ICTA)": [
+            "共1篇",
+            {
+                "An Intelligent Surveillance System Based on Lightweight Object Detection Network L-SSD": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1t5804q0153m0ea0n72m0620av490093&site=xueshu_se"
+            }
+        ],
+        "2019 IEEE International Conference on Multimedia and Expo (ICME)": [
+            "共1篇",
+            {
+                "Particle Swarm Loss for Lightweight Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1f700ap0du3a06s0mc0g0ct05g595112&site=xueshu_se"
+            }
+        ],
+        "2021 International Conference on Computer Communication and Artificial Intelligence (CCAI)": [
+            "共1篇",
+            {
+                "Lightweight Real-time Object Detection Model for UAV Platform": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1r750vp0b77m02w09t600gw0ff622996&site=xueshu_se"
+            }
+        ],
+        "International Conference on Pattern Recognition": [
+            "共1篇",
+            {
+                "Context for Object Detection via Lightweight Global and Mid-level Representations": "https://xueshu.baidu.com/usercenter/paper/show?paperid=14100p103j120tr0h21v0rg02p640250&site=xueshu_se"
+            }
+        ],
+        "Asia-Pacific Conference on Intelligent Robot Systems": [
+            "共1篇",
+            {
+                "An ESP-Based Lightweight Model for Joint Object Detection and Affordance Segmentation": "https://xueshu.baidu.com/usercenter/paper/show?paperid=15260eq015520a90s17q04m0a3218680&site=xueshu_se"
+            }
+        ],
+        "2020 IEEE International Conference on Multimedia & Expo Workshops (ICMEW)": [
+            "共1篇",
+            {
+                "Efficient Yolo: A Lightweight Model For Embedded Deep Learning Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1s1x0pv0m8520tv01k0v0t005u024996&site=xueshu_se"
+            }
+        ],
+        "2020 IEEE International Conference on Multimedia and Expo (ICME)": [
+            "共1篇",
+            {
+                "A Lightweight High-Resolution Representation Backbone For Real-Time Keypoint-Based Object Detection": "https://xueshu.baidu.com/usercenter/paper/show?paperid=1q420j00km2a0m20wh7r04b0s0164635&site=xueshu_se"
+            }
+        ],
+        "International Conference on High Performance Computing and Communications;International Conference on Smart City;IEEE International Conference on Data Science and Systems": [
+            "共1篇",
+            {
+                "High-Performance Object Detection for Optical Remote Sensing Images with Lightweight Convolutional Neural Networks": "https://xueshu.baidu.com/usercenter/paper/show?paperid=152308r0c45d0ee0fj7f0t10y0577815&site=xueshu_se"
+            }
+        ]
+    }
+}
