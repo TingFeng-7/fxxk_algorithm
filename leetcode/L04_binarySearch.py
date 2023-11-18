@@ -75,14 +75,14 @@ class Solution:
                 r = m
         return l
 
-    # ~ 04.寻找两个正序数组的中位数
+    # ! 04.寻找两个正序数组的中位数
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         m, n = len(nums1), len(nums2)
         left = (m + n + 1) // 2
         right = (m + n + 2) // 2
         return (self.findKth(nums1, 0, nums2, 0, left) + self.findKth(nums1, 0, nums2, 0, right)) / 2.0
 
-    # ~ 寻找第K小元素
+    # ! 寻找第K小元素
     def findKth(self, nums1, i, nums2, j, k):
         if i >= len(nums1):  # i,j 分别是两个数组的 start
             return nums2[j + k - 1]  # nums1 is an empty array
@@ -101,7 +101,7 @@ class Solution:
         else:
             return self.findKth(nums1, i, nums2, j + half_k, k - half_k)
         
-    # ~ 240. 搜索二维矩阵 II
+    # ! 240. 搜索二维矩阵 II
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         r = len(matrix) # 行
         c = len(matrix[0]) # 列

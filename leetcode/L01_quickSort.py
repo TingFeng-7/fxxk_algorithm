@@ -4,7 +4,6 @@ import random
 #@ 一些资料网址： https://leetcode.cn/problems/kth-largest-element-in-an-array/solutions/821137/ji-yu-kuai-pai-de-suo-you-topkwen-ti-jia-ylsd/
 # ! 快速排序＋快速选择
 
-
 # ?1. 一直选取最左边为 pivot
 def partition(arr: List[int], low: int, high: int) -> int:
     pivot, left, right = arr[low], low, high     # 双指针
@@ -21,24 +20,13 @@ def partition(arr: List[int], low: int, high: int) -> int:
 
 # ?2. 随机选择pivot
 def randomPartition(arr: List[int], low: int, high: int) -> int:
-
     pivot_idx = random.randint(low, high)
     arr[low], arr[pivot_idx] = arr[pivot_idx], arr[low]     # pivot放置到最左边
     return partition(arr, low, high)
 
 # ?3. 返回第K个元素
 def topKSplit(arr: List[int], low: int, high: int, k: int) -> int:
-    """_summary_
-
-    Args:
-        arr (List[int]): array
-        low (int): left bound
-        high (int): right bound
-        k (int): _description_
-
-    Returns:
-        int: _description_
-    """    
+    
     p = randomPartition(arr, low, high)
     if p == k - 1:                             # 第 K 小元素的下标为k-1
         return arr[p]  # !! 找到即返回

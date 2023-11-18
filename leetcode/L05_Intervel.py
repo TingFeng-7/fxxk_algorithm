@@ -2,11 +2,11 @@ from typing import List
 
 
 class Interval_Solution:
-    # 435 https://leetcode.cn/problems/non-overlapping-intervals/
+    # ? 435 https://leetcode.cn/problems/non-overlapping-intervals/
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         if not intervals:
             return 0
-        intervals.sort(key=lambda x: x[1])
+        intervals.sort(key=lambda x: x[1]) #按照右边数字升序排序
         n = len(intervals)
         end = intervals[0][1]
         ans = 1
@@ -17,7 +17,7 @@ class Interval_Solution:
             # start = e[0]
         return n - ans
 
-    # 452 https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/?envType=study-plan-v2&envId=leetcode-75
+    # ? 452 https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/?envType=study-plan-v2&envId=leetcode-75
     def findMinArrowShots(self, points: List[List[int]]) -> int:
         if not points:
             return 0
