@@ -4,7 +4,6 @@ package main
 import (
 	"math/rand"
 )
-
 // partition 选取最左边为 pivot
 func partition(arr []int, low int, high int) int { // 
 	pivot, left, right := arr[low], low, high // @ := 自动类型
@@ -94,8 +93,4 @@ func search(nums []int, target int) int {
 func findKthLargest(nums []int, k int) int {
 	n := len(nums)
 	return topKSplit(nums, 0, n-1, n-k+1)
-}
-
-func main() {
-	// 测试代码可以在这里添加
 }

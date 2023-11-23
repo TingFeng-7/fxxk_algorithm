@@ -34,10 +34,12 @@ class Solution:
                 else:
                     r = mid - 1
         return -1
-    # ~ 34. 在排序数组中查找元素的第一个和最后一个位置
+    
+    # ? 34. 在排序数组中查找元素的第一个和最后一个位置
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         return [self.left_bound(nums, target), self.right_bound(nums, target)]
-    # ! 二分找元素的左边界
+    
+    # ? 二分找元素的左边界
     def left_bound(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums) - 1
         # 搜索区间为 [left, right]
@@ -51,7 +53,8 @@ class Solution:
         if left >= len(nums) or nums[left] != target: 
             return -1
         return left
-    # ! 二分找元素的右边界
+    
+    # ? 二分找元素的右边界
     def right_bound(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums) - 1
         while left <= right:
@@ -75,14 +78,14 @@ class Solution:
                 r = m
         return l
 
-    # ! 04.寻找两个正序数组的中位数
+    # ? 04.寻找两个正序数组的中位数
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         m, n = len(nums1), len(nums2)
         left = (m + n + 1) // 2
         right = (m + n + 2) // 2
         return (self.findKth(nums1, 0, nums2, 0, left) + self.findKth(nums1, 0, nums2, 0, right)) / 2.0
 
-    # ! 寻找第K小元素
+    # ? 寻找第K小元素
     def findKth(self, nums1, i, nums2, j, k):
         if i >= len(nums1):  # i,j 分别是两个数组的 start
             return nums2[j + k - 1]  # nums1 is an empty array
@@ -101,7 +104,7 @@ class Solution:
         else:
             return self.findKth(nums1, i, nums2, j + half_k, k - half_k)
         
-    # ! 240. 搜索二维矩阵 II
+    # ? 240. 搜索二维矩阵 II
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         r = len(matrix) # 行
         c = len(matrix[0]) # 列

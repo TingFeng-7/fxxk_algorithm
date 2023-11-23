@@ -7,7 +7,7 @@ class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         n = len(nums)
         sum = [0] * (n + 1)
-        #! 数组前缀和 + hash
+        #? 数组前缀和 + hash
         for i in range(1, n+1):
             sum[i] = sum[i-1] + nums[i-1]
 
@@ -20,13 +20,13 @@ class Solution:
 
 
 class Solution01:
-    #`` 528  https://leetcode.cn/problems/random-pick-with-weight/description/
+    # 528  https://leetcode.cn/problems/random-pick-with-weight/description/
     def __init__(self, w: List[int]):
         n = len(w)
         self.prefix_sum = [0] * n
         self.prefix_sum[0] = w[0]
-
-        # 前缀和
+        
+        # prefix_sum
         for i in range(1, n):
             self.prefix_sum[i] = self.prefix_sum[i-1] + w[i]
         print(self.prefix_sum)

@@ -1,29 +1,28 @@
 from typing import List
 
-
+# @ https://labuladong.gitee.io/algo/di-ling-zh-bfe1b/hui-su-sua-56e11/
 class Solution:
-    # -N 46.全排列
+    # ? 46.全排列
     def permute(self, nums: List[int]) -> List[List[int]]:
-        res = []
-        used = [False] * len(nums)  # 用访问数组 来禁止访问
+        res, used = [], [False] * len(nums)  # 用访问数组 来禁止访问
 
         def backtrack(nums, path):
-            if not nums:
+            if not nums: # 如果数组里没有值
                 res.append(path)
                 return
             for i in range(len(nums)):
                 backtrack(nums[:i] + nums[i+1:], path + [nums[i]])
         backtrack(nums, [])
         return res
-    # -N 78.子集
+    
+    # ? 78.子集
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res, n = [], len(nums)
-
         def backtrack(start, path):
             if len(path) > n:
                 return
             else:
-                res.append(path[:])  # ? or path.copy()
+                res.append(path[:])  # : or path.copy()
                 for i in range(start, len(nums)):
                     path.append(nums[i])
                     backtrack(i + 1, path)  # ? i+1 不是start+1
@@ -32,7 +31,7 @@ class Solution:
         backtrack(0, [])
         return res
 
-    #! 39.组合总和 
+    #? 39.组合总和 
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res, n  = [], len(candidates) 
         def backtrack(start, curpath, cursum):  # 开始位置， 上一层选择
@@ -51,7 +50,7 @@ class Solution:
         backtrack(0, [], 0)
         return res
 
-    #! 组合总和 3
+    #? 组合总和 3
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
         res = []
 
@@ -76,7 +75,7 @@ class Solution:
         backtrack(0, [], 0)
         return res
 
-    #! N 皇后
+    #? N 皇后
     def solveNQueens(self, n: int) -> List[List[str]]:
         # :type n: int :rtype: List[List[str]]
         m = n * 2 - 1
@@ -110,8 +109,8 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
-        combination = list()
-        res = list()
+        combination = []
+        res = []
 
         def backtrack(index: int):
             if index == len(digits):

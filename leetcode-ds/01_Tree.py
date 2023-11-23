@@ -5,9 +5,9 @@ class TreeNode:
         self.left = None
         self.right = None
 
-#~ 1.遍历题型
+# ~ 1.遍历题型
 class TraverseTree:
-    #@ 199
+    # @ 199 树的右视图
     def rightSideView(self, root: TreeNode) -> List[int]:
         if not root: return []
         #根结点入queue
@@ -17,17 +17,15 @@ class TraverseTree:
             #只需要对该层最后一个元素入列表
             res.append([node.val for node in queue][-1])
             #存储当前层的孩子节点列表
-            tmp_store = []
+            next_level = []
             #对当前层的每个节点遍历
             for node in queue:
-                #如果左子节点存在，入队列
                 if node.left:
-                    tmp_store.append(node.left)
-                #如果右子节点存在，入队列
+                    next_level.append(node.left)
                 if node.right:
-                    tmp_store.append(node.right)
+                    next_level.append(node.right)
             #后把queue更新成下一层的结点，继续遍历下一层
-            queue = tmp_store
+            queue = next_level
         return res
     
     # @100. 相同的树 的基础上稍加改动

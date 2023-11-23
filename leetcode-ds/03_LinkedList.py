@@ -1,13 +1,11 @@
-
 from typing import List, Optional
-
 
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-# ~ 快慢指针找中点
+# @ 快慢指针找中点
 def end_of_first_half(self, head):
     slow, fast = head, head
     while fast.next and fast.next.next:
@@ -15,7 +13,7 @@ def end_of_first_half(self, head):
         slow = slow.next
     return slow
 
-#~~ 02. 两数相加 (链表版)
+# @ 02. 两数相加 (链表版)
 def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
     p1, p2 = l1, l2
     p = dummy = ListNode(-1)
@@ -35,8 +33,8 @@ def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optio
         p = p.next
     return dummy.next
 
-#~~ 反转链表
-def reverse(head: ListNode) -> ListNode:
+# @ 反转链表
+def reverse_iter(head: ListNode) -> ListNode:
     pre, cur = None, head
     while cur:
         next = cur.next
@@ -45,33 +43,33 @@ def reverse(head: ListNode) -> ListNode:
         pre, cur = cur, next
 
 
-def reverse_v2(head: ListNode) -> ListNode:
+def reverse_recur(head: ListNode) -> ListNode:
     if head is None or head.next is None:
         return head
-    last = reverse_v2(head.next)  # ? 后面部分先翻转
+    last = reverse_recur(head.next)  # ? 后面部分先翻转
     head.next.next = head
     head.next = None  # ? 断开与后面部分的关系
     return last
 
-# ~~ 92. 反转链表 II
+# @ 92. 反转链表 II
 def reverseBetween( head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
     p0 = dummy = ListNode(next=head)
     for _ in range(left - 1):
-        p0 = p0.next #~ p0 到达断点的前面
+        p0 = p0.next #: P0 到达断点 前面
 
     pre = None
     cur = p0.next
     for _ in range(right - left + 1):
         nxt = cur.next
-        cur.next = pre  # 每次循环只修改一个 next，方便大家理解
-        pre = cur
+        cur.next = pre  #: 部分反转
+        pre = cur #: 两个指针右移
         cur = nxt
-
     # 见视频
     p0.next.next = cur
     p0.next = pre
     return dummy.next
-# ~~ 82. 删除排序链表中的重复元素 II
+
+# @ 82. 删除排序链表中的重复元素 II
 def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
     cur = dummy = ListNode(next=head)
     while cur.next and cur.next.next:
@@ -83,7 +81,7 @@ def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
             cur = cur.next
     return dummy.next
 
-#~ 合并两个有序链表
+# @ 合并两个有序链表
 def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
     p = dummy = ListNode(-1)  # ? P是实际遍历的，dummy是最后return的
     p1, p2 = l1, l2
@@ -102,7 +100,7 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
         p.next = p2
     return dummy.next
 
-#~~ 148. 排序链表
+# @ 148. 排序链表
 def sortList(self, head: ListNode) -> ListNode:
     if not head or not head.next:
         return head  # termination.
@@ -123,7 +121,6 @@ def sortList(self, head: ListNode) -> ListNode:
         h = h.next
     h.next = left if left else right
     return res.next
-
 
 def longestValidParentheses(self, s: str) -> int:
     # 定义一个栈，用于存放括号的位置

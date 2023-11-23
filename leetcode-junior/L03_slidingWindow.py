@@ -1,5 +1,5 @@
 class Solution:
-# @76. 最小覆盖子串
+    # @ 76. 最小覆盖子串
     def minWindow(self, s: str, t: str) -> str:
         from collections import Counter
         need = Counter(t)
@@ -34,7 +34,7 @@ class Solution:
         # 返回最小覆盖子串
         return '' if length == float('inf') else s[start:start+length]
     
-# @3. 无重复字符的最长子串
+    # @ 3.无重复字符的最长子串
     def lengthOfLongestSubstring(self, s: str) -> int:
         window = {}
         left = right = 0

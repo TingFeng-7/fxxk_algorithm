@@ -6,7 +6,7 @@ class Interval_Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         if not intervals:
             return 0
-        intervals.sort(key=lambda x: x[1]) #按照右边数字升序排序
+        intervals.sort(key=lambda x: x[1]) # 按照右边数字升序排序
         n = len(intervals)
         end = intervals[0][1]
         ans = 1
