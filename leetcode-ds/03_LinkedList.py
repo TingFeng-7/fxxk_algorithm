@@ -33,7 +33,7 @@ def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optio
         p = p.next
     return dummy.next
 
-# @ 反转链表
+# @ 反转链表 全部
 def reverse_iter(head: ListNode) -> ListNode:
     pre, cur = None, head
     while cur:
@@ -51,7 +51,7 @@ def reverse_recur(head: ListNode) -> ListNode:
     head.next = None  # ? 断开与后面部分的关系
     return last
 
-# @ 92. 反转链表 II
+# @ 92. 反转链表 II betwen
 def reverseBetween( head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
     p0 = dummy = ListNode(next=head)
     for _ in range(left - 1):
@@ -100,8 +100,9 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
         p.next = p2
     return dummy.next
 
-# @ 148. 排序链表
+# @ 148. 排序链表 
 def sortList(self, head: ListNode) -> ListNode:
+    # : 给定链表头结点，请将其按升序排列并返回排序后的链表
     if not head or not head.next:
         return head  # termination.
     # cut the LinkedList at the mid index.
@@ -122,32 +123,51 @@ def sortList(self, head: ListNode) -> ListNode:
     h.next = left if left else right
     return res.next
 
+# @143 重排链表
+def reorderList(head):
+    if not head or not head.next:
+        return head
+    # : 1.找到链表的中点
+    slow, fast = head, head
+    while fast.next and fast.next.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    # : 2.反转第二部分链表
+    prev, current = None, slow.next
+    slow.next = None
+    while current:
+        temp = current.next
+        current.next = prev
+        prev = current
+        current = temp
+
+    # : 3.合并两个链表
+    first, second = head, prev
+    while second:
+        temp1, temp2 = first.next, second.next
+        first.next = second
+        second.next = temp1
+        first, second = temp1, temp2
+    return head
+
 def longestValidParentheses(self, s: str) -> int:
-    # 定义一个栈，用于存放括号的位置
-    stack = [-1]
-    # 定义一个变量，用于存放最长的括号的长度
-    max_len = 0
-    # 定义一个变量，用于存放括号的位置
-    flag = -1
-    # 遍历字符串s
-    for i in range(len(s)):
-        # 如果当前字符是括号，则将其位置放入栈中
+    stack = [-1] # 定义一个变量，用于存放最长的括号的长度
+    max_len = 0 # 定义一个变量，用于存放括号的位置
+    flag = -1 # 遍历字符串s
+    for i in range(len(s)): # 如果当前字符是括号，则将其位置放入栈中
         if s[i] == '(':
-            stack.append(i)
-        # 如果当前字符是右括号，则从栈中弹出一个括号，并记录其位置
+            stack.append(i) # 如果当前字符是右括号，则从栈中弹出一个括号，并记录其位置
         else:
-            stack.pop(-1)
-            # 如果栈不为空，则将栈顶元素出栈，并记录其位置
-            if len(stack):
-                # stack.pop(-1)
-                max_len = max(max_len, i - stack[-1])
-            # 如果栈为空，则将当前元素放入栈中
+            stack.pop(-1) # 如果栈不为空，则将栈顶元素出栈，并记录其位置
+            if len(stack):  # stack.pop(-1)
+                max_len = max(max_len, i - stack[-1]) # 如果栈为空，则将当前元素放入栈中
             else:
                 # flag = i
                 stack.append(i)
     return max_len
 
-#~~ 合并K个有序链表
+# @ hard 合并K个有序链表
 def mergeKLists(self, lists: List[ListNode]) -> ListNode:
     import heapq
     dummy = ListNode(0)    # 创建一个链表头节点，并将其初始值设置为0
@@ -160,10 +180,8 @@ def mergeKLists(self, lists: List[ListNode]) -> ListNode:
             # 将列表中的元素添加到列表中
             lists[i] = lists[i].next            # 将链表中的节点设置为下一个节点
 
-    while head:     # 当列表中存在节点时，开始循环
-        # 获取列表中的最小值
-        val, idx = heapq.heappop(head)
-        # 将最小值添加到链表头节点的下一个节点中
+    while head:     # 当列表中存在节点时 , 获取列表中的最小值
+        val, idx = heapq.heappop(head) # 将最小值添加到链表头节点的下一个节点中
         p.next = ListNode(val)
         # 将链表头节点设置为下一个节点
         p = p.next
@@ -176,8 +194,7 @@ def mergeKLists(self, lists: List[ListNode]) -> ListNode:
     # 返回链表头节点
     return dummy.next
 
-#~~ 旋转链表
-
+# 旋转链表
 def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     if not head:
         return head

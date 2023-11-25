@@ -27,21 +27,6 @@ func checkSubarraySum(nums []int, k int) bool { //
 	}
 }
 
-func checkSubarraySum_range(nums []int, k int) bool { // 
-	n := len(nums) // @ := 自动类型
-	prefixSum := make([]int, n+1) // list
-	for i, num := range nums { // range关键字，有点想enumerate
-		prefixSum[i+1] = prefixSum[i] + num
-	}
-	sumMap := make((map[int]int)) // empty dict
-	for i := 2; i <= n; i++ {
-		s[sum[i-2]%k]++
-		if s[sum[i]%k] > 0 {
-			return true
-		}
-	return false
-	}
-}
 
 func Constructor(w []int) Solution {
 	n := len(w)
@@ -61,7 +46,4 @@ func (s *Solution) PickIndex() int {
 		return s.prefixSum[i] >= seed
 	})
 	return index
-}
-func main()  {
-	
 }

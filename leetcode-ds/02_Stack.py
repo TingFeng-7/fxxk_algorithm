@@ -1,4 +1,4 @@
-#~ 
+
 class MinStack:
     def __init__(self):
         self.stack = []
@@ -34,9 +34,24 @@ class Solution:
         for c in s:
             if c in hashmap:
                 stack.append(c)
-            elif stack != []:  # 栈不为空的前提下
+            elif stack != []:  # : 栈不为空的前提下
                 if hashmap[stack.pop()] != c:
                     return False
-            else:
+            else: # : 栈已经为空了
                 return False
         return stack == []
+
+    def decodeString(self, s: str) -> str:
+        stack, res, multi = [], "", 0
+        for c in s:
+            if c == '[':
+                stack.append([multi, res])
+                res, multi = "", 0
+            elif c == ']':
+                cur_multi, last_res = stack.pop()
+                res = last_res + cur_multi * res
+            elif '0' <= c <= '9':
+                multi = multi * 10 + int(c)            
+            else:
+                res += c
+        return res

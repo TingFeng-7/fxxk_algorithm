@@ -17,7 +17,6 @@ class Solution:
     def longestPalindrome_center(self, s: str) -> str:
         # @ 二重循环 + 判断是否回文 中心扩散法
         res = ""
-
         def palindrome(s, l, r):
             # l,r不越界 and 左右端点相等时
             while (l >= 0 and r < len(s) and s[l] == s[r]):
@@ -92,16 +91,14 @@ def multiply(num1: str, num2: str) -> str:
     # 从个位数开始逐位相乘
     for i in range(m - 1, -1, -1):
         for j in range(n - 1, -1, -1):
-            mul = (ord(num1[i]) - ord('0')) * (ord(num2[j]) - ord('0'))
-            # 乘积在 res 对应的索引位置
-            p1, p2 = i + j, i + j + 1
-            # 叠加到 res 上
-            sum = mul + res[p2]
-            res[p2] = sum % 10
-            res[p1] += sum // 10
-    # 结果前缀可能存的 0（未使用的位）
+            mul = (ord(num1[i]) - ord('0')) * (ord(num2[j]) - ord('0')) # 乘积在 res 对应的索引位置
+            p1, p2 = i + j, i + j + 1 # p1 p2 高位-低位
+            sum1 = mul + res[p2] #: 当轮乘积 + 当前个位值
+            res[p2] = sum1 % 10
+            res[p1] += sum1 // 10
+    
     i = 0
-    while i < len(res) and res[i] == 0:
+    while i < len(res) and res[i] == 0: # 越过结果前缀可能存的 0（未使用的位）
         i += 1
     # 将计算结果转化成字符串
     res_str = ''.join(str(e) for e in res[i:])
@@ -138,21 +135,34 @@ def myAtoi(s):
 def compareVersion(version1, version2):
     v1 = list(map(int, version1.split('.')))
     v2 = list(map(int, version2.split('.')))
-
     # 补充版本号长度，使两个版本号长度相同
     while len(v1) < len(v2):
         v1.append(0)
     while len(v2) < len(v1):
         v2.append(0)
-
     # 逐个比较修订号
     for num1, num2 in zip(v1, v2):
         if num1 > num2:
             return 1
         elif num1 < num2:
             return -1
-
     return 0
+
+# @ 394. 字符串解码
+def decodeString(self, s: str) -> str:
+    stack, res, multi = [], "", 0
+    for c in s:
+        if c == '[':
+            stack.append([multi, res])
+            res, multi = "", 0
+        elif c == ']':
+            cur_multi, last_res = stack.pop()
+            res = last_res + cur_multi * res
+        elif '0' <= c <= '9':
+            multi = multi * 10 + int(c)            
+        else:
+            res += c
+    return res
 
 # 示例
 version1 = "1.0"
