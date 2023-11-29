@@ -7,8 +7,8 @@ class TreeNode:
 
 class Solution:
     pre = float('-inf')
-    #~ 有效二叉树
     # 左中右 中序遍历
+    # @ 有效二叉树
     def isValidBST(self, root: TreeNode) -> bool:
         if not root:
             return True

@@ -6,11 +6,12 @@ class Node:
     def __init__(self, val=0, neighbors=None):
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
-# 图的经典问题：
-# 课程表，图的克隆
+        
+# https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-03a72/huan-jian--e36de/
+# 图的经典问题： 课程表，图的克隆
 
 class Solution:
-    # todo 课程表 2
+    # todo 课程表2
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         indegrees = [0 for _ in range(numCourses)]
         adjacency = [[] for _ in range(numCourses)]

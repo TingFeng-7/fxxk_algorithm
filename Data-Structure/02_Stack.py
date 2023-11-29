@@ -24,10 +24,11 @@ class MinStack:
         if len(self.mins) != 0:
             return self.mins[-1]
         return 0
-
-
+    
+# 括号问题
+# https://labuladong.github.io/algo/di-san-zha-24031/jing-dian--a94a0/ru-he-jie--306f6/
 class Solution:
-    # -N 有效的括号
+    # @ 20 有效的括号 思想：左括号进栈，右括号出现但没有相应左括号是 直接返回false
     def isValid(self, s: str) -> bool:
         hashmap = {'{': '}', '[': ']', '(': ')'}
         stack = []
@@ -40,7 +41,7 @@ class Solution:
             else: # : 栈已经为空了
                 return False
         return stack == []
-
+    # 编码字符串
     def decodeString(self, s: str) -> str:
         stack, res, multi = [], "", 0
         for c in s:
@@ -55,3 +56,21 @@ class Solution:
             else:
                 res += c
         return res
+    # 简化路径
+    def simplifyPath(self, path: str) -> str:
+        parts = path.split("/")
+        stk = []
+        # 借助栈计算最终的文件夹路径
+        for part in parts:
+            if part == '' or part == '.':
+                continue
+            if part == '..':
+                if stk:
+                    stk.pop()
+                continue
+            stk.append(part)
+        # 栈中存储的文件夹组成路径
+        res = ""
+        while stk:
+            res = '/' + stk.pop() + res
+        return res if res else '/'

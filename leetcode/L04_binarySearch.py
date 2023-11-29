@@ -1,6 +1,7 @@
 from typing import List
 
-
+# 二分的本质
+# https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/solutions/705486/gong-shui-san-xie-xiang-jie-wei-he-yuan-xtam4/
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         l, r = 0, len(letters)

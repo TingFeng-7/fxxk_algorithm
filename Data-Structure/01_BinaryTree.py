@@ -5,8 +5,8 @@ class TreeNode:
         self.left = None
         self.right = None
 
-# ~ 1.遍历题型
-class TraverseTree:
+# : 1.遍历题型
+class Solution01:
     # @ 199 树的右视图
     def rightSideView(self, root: TreeNode) -> List[int]:
         if not root: return []
@@ -46,11 +46,24 @@ class TraverseTree:
         return p.val == q.val and \
             self.isSameTree(p.left, q.right) and self.isSameTree(p.right, q.left) #两个左对左，现在变左对右
     
-    # ~101. 对称二叉树
+    # class Solution {
+# public:
+#     bool check(TreeNode *p, TreeNode *q) {
+#         if (!p && !q) return true;
+#         if (!p || !q) return false;
+#         return p->val == q->val && check(p->left, q->right) && check(p->right, q->left);
+#     }
+
+#     bool isSymmetric(TreeNode* root) {
+#         return check(root, root);
+#     }
+# };
+
+    # @ 101. 对称二叉树
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return self.isSameTree(root.left, root.right)
     
-    # ~236. 最近公共祖先 先序遍历，中左右
+    # @ 236. 最近公共祖先 先序遍历，中左右
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
         """ find lowest common ancestor
         
@@ -92,7 +105,7 @@ class TraverseTree:
         dfs("", 0, 0)
         return res
 
-# ~2. 构造题型
+# : 2. 构造题型
 class ConstructTree(object):
 	def buildTree(self, preorder, inorder):
 		if not (preorder and inorder):

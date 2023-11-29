@@ -2,7 +2,7 @@ from typing import List
 
 # @ https://labuladong.gitee.io/algo/di-ling-zh-bfe1b/hui-su-sua-56e11/
 class Solution:
-    # ? 46.全排列
+    # @ 46.全排列
     def permute(self, nums: List[int]) -> List[List[int]]:
         res, used = [], [False] * len(nums)  # 用访问数组 来禁止访问
 
@@ -15,23 +15,24 @@ class Solution:
         backtrack(nums, [])
         return res
     
-    # ? 78.子集
+    # @ 78.子集
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res, n = [], len(nums)
-        def backtrack(start, path):
+        
+        def backtrack(start:int, path:List[int]):
             if len(path) > n:
                 return
             else:
                 res.append(path[:])  # : or path.copy()
                 for i in range(start, len(nums)):
                     path.append(nums[i])
-                    backtrack(i + 1, path)  # ? i+1 不是start+1
+                    backtrack(i + 1, path)  # @ i+1 不是start+1
                     path.pop(-1)
 
         backtrack(0, [])
         return res
 
-    #? 39.组合总和 
+    #@ 39.组合总和 
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res, n  = [], len(candidates) 
         def backtrack(start, curpath, cursum):  # 开始位置， 上一层选择
@@ -50,10 +51,9 @@ class Solution:
         backtrack(0, [], 0)
         return res
 
-    #? 组合总和 3
+    #@ 组合总和 3
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
         res = []
-
         def backtrack(start, curpath, cursum):  # 开始index， 当前选择， 当前选择和
             if len(curpath) == k:  # 顺利终止条件
                 if cursum == n:
@@ -75,7 +75,7 @@ class Solution:
         backtrack(0, [], 0)
         return res
 
-    #? N 皇后
+    #@ N 皇后 Hard
     def solveNQueens(self, n: int) -> List[List[str]]:
         # :type n: int :rtype: List[List[str]]
         m = n * 2 - 1
@@ -95,7 +95,7 @@ class Solution:
                     on_path[c] = diag1[r + c] = diag2[r - c] = False  # ! 恢复现场
         dfs(0)
         return ans
-
+    # 电话 号码组合
     def letterCombinations(self, digits: str) -> List[str]:
         if not digits:
             return list()
@@ -126,10 +126,8 @@ class Solution:
         return res
 
     def partition(self, s: str) -> List[List[str]]:
-
         res = []
         n = len(s)
-
         def backtrack(start, curpath, cursum):  # 开始位置， 上一层选择
             #! 1.结束条件
             if start == n:
@@ -154,3 +152,18 @@ class Solution:
             lo += 1
             hi -= 1
         return True
+    # @ 113. 路径总和 2  对二叉树
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        res, path = [], []
+        def recur(root, tar):
+            if not root: return
+            path.append(root.val)
+            tar -= root.val
+            if tar == 0 and not root.left and not root.right:
+                res.append(list(path))
+            recur(root.left, tar)
+            recur(root.right, tar)
+            path.pop()
+
+        recur(root, targetSum)
+        return res
