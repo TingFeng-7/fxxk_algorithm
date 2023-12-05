@@ -33,22 +33,22 @@ def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optio
         p = p.next
     return dummy.next
 
-# @ 反转链表 全部
+# @ 206 反转链表
 def reverse_iter(head: ListNode) -> ListNode:
     pre, cur = None, head
     while cur:
-        next = cur.next
+        nxt = cur.next
         cur.next = pre
-        #? 集体右移
-        pre, cur = cur, next
+        pre, cur = cur, nxt # 集体右移
 
-
+# : 递归版本
+# 定义：输入一个单链表头节点，将该链表反转，返回新的头结点
 def reverse_recur(head: ListNode) -> ListNode:
     if head is None or head.next is None:
         return head
-    last = reverse_recur(head.next)  # ? 后面部分先翻转
-    head.next.next = head
-    head.next = None  # ? 断开与后面部分的关系
+    last = reverse_recur(head.next)  # (head.next) 先翻转
+    head.next.next = head # (head.next).next 指向head  
+    head.next = None  #  断开与后面部分的关系
     return last
 
 # @ 92. 反转链表 II betwen
@@ -60,11 +60,11 @@ def reverseBetween( head: Optional[ListNode], left: int, right: int) -> Optional
     pre = None
     cur = p0.next
     for _ in range(right - left + 1):
-        nxt = cur.next
-        cur.next = pre  #: 部分反转
+        nxt = cur.next #: 保存 nxt-node
+        cur.next = pre  #: cur-node next 指向 pre-node
         pre = cur #: 两个指针右移
         cur = nxt
-    # 见视频
+
     p0.next.next = cur
     p0.next = pre
     return dummy.next

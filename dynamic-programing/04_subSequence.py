@@ -2,14 +2,12 @@
 from typing import List
 
 # 当s[i]与s[j]相等时，这就复杂一些了，有如下三种情况
-
 # 情况一：下标i 与 j相同，同一个字符例如a，当然是回文子串
 # 情况二：下标i 与 j相差为1，例如aa，也是文子串
 # 情况三：下标：i 与 j相差大于1的时候，例如cabac，此时s[i]与s[j]已经相同了，
 #           我们看i到j区间是不是回文子串就看aba是不是回文就可以了，那么aba的区间就是
 #           i+1 与 j-1区间，这个区间是不是回文就看dp[i + 1][j - 1]是否为true。
 
-# 5. 最长回文子串
 def longestPalindrome(s: str) -> str:
     # 二重循环 + 判断是否回文 中心扩散法
     res = ""
@@ -29,31 +27,51 @@ def longestPalindrome(s: str) -> str:
     return res
 
 def longestPalindrome_dp(self, s: str) -> str:
+    # 5. 最长回文子串
     dp=[[False]*len(s) for i in range(len(s))]
-    maxL=1
+    n, maxL = len(s), 1
     left,right = 0 ,0
-    for i in range(len(s)):
+    for i in range(n):
         dp[i][i] =True
-    for i in range(len(s)-1,-1,-1): # 自下向上
-        for j in range(i, len(s)): # 从左到右
+    for i in range(n-1, -1, -1): # 自下向上
+        for j in range(i, n): # 从左到右
             if (j - i <= 1 or dp[i + 1][j - 1]) and s[i] == s[j]:
                 dp[i][j] =True
             if dp[i][j] and j-i+1 > maxL:
                 maxL = j-i+1
                 left, right = i, j
     return s[left:left+maxL]
+    
+    # 最长公共子序列
+    def longestCommonSubsequence(self, s1: str, s2: str) -> int:
+        m, n = len(s1), len(s2)
+        # 定义：s1[0..i-1] 和 s2[0..j-1] 的 lcs 长度为 dp[i][j]
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        # 目标：s1[0..m-1] 和 s2[0..n-1] 的 lcs 长度，即 dp[m][n]
+        # base case: dp[0][..] = dp[..][0] = 0
 
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                # 现在 i 和 j 从 1 开始，所以要减一
+                if s1[i - 1] == s2[j - 1]:
+                    # s1[i-1] 和 s2[j-1] 必然在 lcs 中
+                    dp[i][j] = 1 + dp[i - 1][j - 1]
+                else:
+                    # s1[i-1] 和 s2[j-1] 至少有一个不在 lcs 中
+                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
+
+        return dp[m][n]
+    
 def lengthOfLIS(self, nums: List[int]) -> int:
+    #  300.最长递增子序列 (元素连续)
     n = len(nums)
     dp = [1] * n
     res = 1
-    for i in range(1, n):  # 终点
-        for j in range(0, i):  # 起点
-            # 条件关注
+    for i in range(1, n):  #: end 
+        for j in range(0, i):  #: start
             if nums[i] > nums[j]:
                 dp[i] = max(dp[i], dp[j] + 1)
-
-        res = max(res, dp[i])  # max 循环遍历
+        res = max(res, dp[i])  #: record maxVal
     return res
 
 # -n 31.下一个全排列

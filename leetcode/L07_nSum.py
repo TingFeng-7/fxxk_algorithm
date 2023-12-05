@@ -2,26 +2,26 @@ from typing import List
 
 
 class Solution:
-    # @两数之和
+    # @两数之和 思想: 使用hashmap 「need_val : ind」
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        record = {}
+        memo = {}
         for i in range(len(nums)):
             need_val = target-nums[i]
-            if need_val in record:
-                return [record[need_val], i]
+            if need_val in memo: # if need_val already exist in memo , directly return
+                return [memo[need_val], i]
             else:
-                record[nums[i]] = i
+                memo[nums[i]] = i # else val and cur_idx will record in memo 
         return [0, 0]
-    # @ 三数之和
+    
+    # @ 三数之和 思想： target=0
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         res, k = [], 0
         for k in range(len(nums) - 2):
-            if nums[k] > 0:
-                break     #:1. because of j > i > k.
-            if k > 0 and nums[k] == nums[k - 1]:
-                continue  #:2. skip the same nums[k]
+            if nums[k] > 0:  break     #:1. because of j > i > k.
+            if k > 0 and nums[k] == nums[k - 1]: continue  #:2. skip the same nums[k]
             i, j = k + 1, len(nums) - 1
+            
             while i < j:  #:3. double pointer
                 s = nums[k] + nums[i] + nums[j]
                 if s < 0:
@@ -41,6 +41,7 @@ class Solution:
                     while i < j and nums[j] == nums[j + 1]:
                         j -= 1
         return res
+    
     # @ 18. 四数之和
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         nums.sort()

@@ -41,6 +41,7 @@ class Solution:
             else: # : 栈已经为空了
                 return False
         return stack == []
+    
     # 编码字符串
     def decodeString(self, s: str) -> str:
         stack, res, multi = [], "", 0
@@ -56,6 +57,7 @@ class Solution:
             else:
                 res += c
         return res
+    
     # 简化路径
     def simplifyPath(self, path: str) -> str:
         parts = path.split("/")

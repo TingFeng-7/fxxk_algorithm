@@ -1,5 +1,5 @@
 class Solution:
-    # ! 最长回文子串
+    # 05.breakpoint 最长回文子串
     def longestPalindrome_dp(self, s: str) -> str:
         #@ 动态规划法
         dp = [[False]*len(s) for i in range(len(s))]
@@ -25,11 +25,9 @@ class Solution:
             return s[l+1 : r]
 
         for i in range(len(s)):
-            # 以 s[i] 为中心的最长回文子串
-            s1 = palindrome(s, i, i)
-            # 以 s[i] 和 s[i+1] 为中心的最长回文子串
-            s2 = palindrome(s, i, i + 1)
-            # res = longest(res, s1, s2)
+            s1 = palindrome(s, i, i)  # 以 s[i] 为中心的最长回文子串
+            s2 = palindrome(s, i, i + 1) # 以 s[i] 和 s[i+1] 为中心的最长回文子串
+            
             res = res if len(res) > len(s1) else s1
             res = res if len(res) > len(s2) else s2
         return res
@@ -73,35 +71,31 @@ class Solution:
             c = s[r]
             hashmap[c] = hashmap.get(c, 0) + 1
             r += 1
-            while hashmap[c] >= 2:  # 收缩条件
+            while hashmap[c] > 1:  # 收缩条件
                 del_char = s[l]
                 l += 1
                 hashmap[del_char] -= 1
             maxl = max(maxl, r-l)
-
         return maxl
 
-# 注意：python 代码由 chatGPT🤖 根据我的 cpp 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
-# 本代码不保证正确性，仅供参考。如有疑惑，可以参照我写的 cpp 代码对比查看。
 # @ 43 字符串相乘
 def multiply(num1: str, num2: str) -> str:
-    m, n = len(num1), len(num2)
-    # 结果最多为 m + n 位数
-    res = [0] * (m + n)
-    # 从个位数开始逐位相乘
+    m, n = len(num1), len(num2) # 结果最多为 m + n 位数
+    res = [0] * (m + n) # 从个位数开始逐位相乘
     for i in range(m - 1, -1, -1):
         for j in range(n - 1, -1, -1):
-            mul = (ord(num1[i]) - ord('0')) * (ord(num2[j]) - ord('0')) # 乘积在 res 对应的索引位置
-            p1, p2 = i + j, i + j + 1 # p1 p2 高位-低位
-            sum1 = mul + res[p2] #: 当轮乘积 + 当前个位值
+            intnum1, intnum2= (ord(num1[i]) - ord('0')),  (ord(num2[j]) - ord('0'))
+            mul = intnum1 * intnum2 # 乘积在 res 对应的索引位置
+            p1, p2 = i + j, i + j + 1 # p1 p2 高位,低位
+            sum1 = mul + res[p2] # 当轮乘积 + 当前个位值
             res[p2] = sum1 % 10
             res[p1] += sum1 // 10
     
     i = 0
     while i < len(res) and res[i] == 0: # 越过结果前缀可能存的 0（未使用的位）
         i += 1
-    # 将计算结果转化成字符串
-    res_str = ''.join(str(e) for e in res[i:])
+
+    res_str = ''.join(str(e) for e in res[i:]) # 将计算结果转化成字符串
     return res_str if res_str else '0'
 
 # @ 08 字符串转化成整数

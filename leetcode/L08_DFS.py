@@ -15,7 +15,7 @@ def dfs(grid: List[List[int]], i: int, j: int, visited: List[List[bool]]) -> Non
         next_j = j + d[1]
         dfs(grid, next_i, next_j, visited)
 
-# todo 从 (i, j) 开始，将与之相邻的陆地都变成海水
+#  从 (i, j) 开始，将与之相邻的陆地都变成海水
 
 
 def floodfill(grid: List[List[str]], i: int, j: int) -> None:
