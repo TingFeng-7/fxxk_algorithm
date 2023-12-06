@@ -3,6 +3,22 @@ from typing import List
 # 二分的本质
 # https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/solutions/705486/gong-shui-san-xie-xiang-jie-wei-he-yuan-xtam4/
 class Solution:
+    # https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/solutions/134812/yi-wen-jie-jue-4-dao-sou-suo-xuan-zhuan-pai-xu-s-3/
+    # 一文解决四道搜索旋转排序数组
+    
+    # 153. 寻找旋转排序数组中的最小值
+    def findMin(self, nums: List[int]) -> int:
+        l, r = 0, len(nums)-1
+        while l < r:
+            mid = l + (r-l)//2
+            if nums[mid] < nums[r]: # 说明 该区间 连续递增
+                r = mid
+            elif nums[mid] > nums[r]:
+            # else:
+                l = mid + 1
+
+        return nums[l]
+    # 下一个最大字符
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         l, r = 0, len(letters)
         if ord(letters[-1]) - ord(target) < 1:
@@ -55,7 +71,7 @@ class Solution:
             return -1
         return left
     
-    # ? 二分找元素的右边界
+    # ? 二分找 元素右边界
     def right_bound(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums) - 1
         while left <= right:
@@ -105,6 +121,18 @@ class Solution:
         else:
             return self.findKth(nums1, i, nums2, j + half_k, k - half_k)
         
+    # 74. 搜索二维矩阵
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m, n = len(matrix), len(matrix[0])
+        x,y = 0, n - 1
+        while x < m and y >= 0:
+            if matrix[x][y] > target:
+                y -= 1
+            elif matrix[x][y] < target:
+                x += 1
+            else:
+                return True
+        return False   
     # ? 240. 搜索二维矩阵 II
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         r = len(matrix) # 行

@@ -1,7 +1,25 @@
 from typing import List
 
-# @ https://labuladong.gitee.io/algo/di-ling-zh-bfe1b/hui-su-sua-56e11/
+#  https://labuladong.gitee.io/algo/di-ling-zh-bfe1b/hui-su-sua-56e11/
 class Solution:
+    #  22. 括号生成
+    def generateParenthesis(self, n: int) -> List[str]:
+        #回溯 剪枝
+        sz = 2 * n
+        res = []
+        def dfs(path, l_num, r_num):
+            if  l_num > n or r_num > n or r_num > l_num:
+                return
+            if len(path) == sz and l_num==r_num:
+                res.append(path[:])
+                return
+            # print(l_num, r_num)
+            dfs(path+'(', l_num+1, r_num)
+            dfs(path+')', l_num, r_num+1)
+
+        dfs("", 0,0)
+        return res 
+    
     # @ 46.全排列
     def permute(self, nums: List[int]) -> List[List[int]]:
         res, used = [], [False] * len(nums)  # 用访问数组 来禁止访问
@@ -15,6 +33,28 @@ class Solution:
         backtrack(nums, [])
         return res
     
+    # @ 47. 全排列 
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        self.res = []
+        check = [0 for i in range(len(nums))]
+        self.backtrack([], nums, check)
+        return self.res
+    
+    def backtrack(self, sol, nums, check):
+        if len(sol) == len(nums):
+            self.res.append(sol)
+            return
+        
+        for i in range(len(nums)):
+            if check[i] == 1:
+                continue
+            if i > 0 and nums[i] == nums[i-1] and check[i-1] == 0:
+                continue
+            check[i] = 1
+            self.backtrack(sol+[nums[i]], nums, check)
+            check[i] = 0
+            
     # @ 78.子集
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res, n = [], len(nums)
@@ -95,7 +135,7 @@ class Solution:
                     on_path[c] = diag1[r + c] = diag2[r - c] = False  # ! 恢复现场
         dfs(0)
         return ans
-    # 电话 号码组合
+    # @ 17. 电话号码的字符组合
     def letterCombinations(self, digits: str) -> List[str]:
         if not digits:
             return list()

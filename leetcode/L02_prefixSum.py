@@ -17,7 +17,20 @@ class Solution:
             if sum[i] % k in s:
                 return True
         return False
+    
+    # @ 和为k的子数组
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        prefixSum = 0
+        count = 0
+        prefixSumCounts = defaultdict(int)
+        prefixSumCounts[0] = 1
 
+        for num in nums:
+            prefixSum += num
+            count += prefixSumCounts[prefixSum - k]
+            prefixSumCounts[prefixSum] += 1
+
+        return count
 
 class Solution01:
     # 528  https://leetcode.cn/problems/random-pick-with-weight/description/

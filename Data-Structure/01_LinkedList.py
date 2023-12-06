@@ -13,12 +13,21 @@ def end_of_first_half(self, head):
         slow = slow.next
     return slow
 
+def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+        first, second, others = head, head.next, head.next.next
+        second.next = first
+        
+        first.next = self.swapPairs(others)
+        return second
+    
 # @ 02. 两数相加 (链表版)
 def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
     p1, p2 = l1, l2
     p = dummy = ListNode(-1)
     carry = 0
-    #! 固定三个东西 进位
+    # 固定三个东西 进位
     while p1 != None or p2 != None or carry > 0:
         val = carry
         if p1 != None:
@@ -51,7 +60,7 @@ def reverse_recur(head: ListNode) -> ListNode:
     head.next = None  #  断开与后面部分的关系
     return last
 
-# @ 92. 反转链表 II betwen
+# @ 92. 反转链表 II between
 def reverseBetween( head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
     p0 = dummy = ListNode(next=head)
     for _ in range(left - 1):
@@ -102,7 +111,7 @@ def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
 
 # @ 148. 排序链表 
 def sortList(self, head: ListNode) -> ListNode:
-    # : 给定链表头结点，请将其按升序排列并返回排序后的链表
+    #  给定链表头结点，请将其按升序排列并返回排序后的链表
     if not head or not head.next:
         return head  # termination.
     # cut the LinkedList at the mid index.
@@ -123,7 +132,7 @@ def sortList(self, head: ListNode) -> ListNode:
     h.next = left if left else right
     return res.next
 
-# @143 重排链表
+# @ 143 重排链表
 def reorderList(head):
     if not head or not head.next:
         return head
@@ -194,6 +203,22 @@ def mergeKLists(self, lists: List[ListNode]) -> ListNode:
     # 返回链表头节点
     return dummy.next
 
+# @ 19. 删除链表的倒数第 N 个结点
+def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    dhead = ListNode(-1)
+    dhead.next = head
+    slow, fast = dhead,dhead
+    while n>0:
+        fast = fast.next
+        n-=1
+    while fast.next:
+        slow = slow.next
+        fast = fast.next
+    #此时 slow.next 是待删节点
+    slow.next = slow.next.next
+    # print(slow)
+    return dhead.next
+    
 # 旋转链表
 def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     if not head:
@@ -219,7 +244,6 @@ def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
         cur = cur.next
     return dummy
 
-
 def count(val):
     zerosum = 0
     while val:
@@ -229,7 +253,6 @@ def count(val):
         else:
             break
     return val, zerosum
-
 
 if __name__ == '__main__':
     lists = [[1, 4, 5], [1, 3, 4], [2, 6]]

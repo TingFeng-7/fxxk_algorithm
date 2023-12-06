@@ -13,6 +13,76 @@ class Solution:
                 memo[nums[i]] = i # else val and cur_idx will record in memo 
         return [0, 0]
     
+    # @ 16. 最接近的三数之和
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        if len(nums) < 3:
+            return 0
+        nums.sort()         # 别忘了要先排序数组
+        min_bias = float('inf')         # 记录三数之和 与 目标值的 最小偏差
+        for i in range(len(nums) - 2):
+            # 固定 nums[i] 为三数之和中的第一个数，
+            # 然后对 nums[i+1..] 搜索接近 target - nums[i] 的两数之和
+            sum_ = nums[i] + self.twoSumClosest(nums, i + 1, target - nums[i])
+            min_bias = target - sum_ if abs(min_bias) > abs(target - sum_)  else min_bias
+                
+        return target - min_bias
+
+    # 在 nums[start..] 搜索最接近 target 的两数之和
+    def twoSumClosest(self, nums: List[int], start: int, target: int) -> int:
+        lo, hi = start, len(nums) - 1
+        # 记录两数之和与目标值的偏差
+        min_bias = float('inf')
+        while lo < hi:
+            sum_ = nums[lo] + nums[hi]
+            min_bias = target - sum_ if abs(min_bias) > abs(target - sum_)  else min_bias
+            if sum_ < target:
+                lo += 1
+            else:
+                hi -= 1
+        return target - min_bias
+    
+    # 
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        n = len(nums)
+        min_diff = inf
+        for i in range(n - 2):
+            x = nums[i]
+            if i and x == nums[i - 1]:
+                continue  # 优化三
+
+            # 优化一
+            s = x + nums[i + 1] + nums[i + 2]
+            if s > target:  # 后面无论怎么选，选出的三个数的和不会比 s 还小
+                if s - target < min_diff:
+                    ans = s  # 由于下一行直接 break，这里无需更新 min_diff
+                break
+
+            # 优化二
+            s = x + nums[-2] + nums[-1]
+            if s < target:  # x 加上后面任意两个数都不超过 s，所以下面的双指针就不需要跑了
+                if target - s < min_diff:
+                    min_diff = target - s
+                    ans = s
+                continue
+
+            # 双指针
+            j, k = i + 1, n - 1
+            while j < k:
+                s = x + nums[j] + nums[k]
+                if s == target:
+                    return s
+                if s > target:
+                    if s - target < min_diff:  # s 与 target 更近
+                        min_diff = s - target
+                        ans = s
+                    k -= 1
+                else:  # s < target
+                    if target - s < min_diff:  # s 与 target 更近
+                        min_diff = target - s
+                        ans = s
+                    j += 1
+        return ans
     # @ 三数之和 思想： target=0
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
@@ -26,20 +96,16 @@ class Solution:
                 s = nums[k] + nums[i] + nums[j]
                 if s < 0:
                     i += 1
-                    while i < j and nums[i] == nums[i - 1]:
-                        i += 1
+                    while i < j and nums[i] == nums[i - 1]: i += 1
                 elif s > 0:
                     j -= 1
-                    while i < j and nums[j] == nums[j + 1]:
-                        j -= 1
+                    while i < j and nums[j] == nums[j + 1]: j -= 1
                 else:
                     res.append([nums[k], nums[i], nums[j]])
                     i += 1
                     j -= 1
-                    while i < j and nums[i] == nums[i - 1]:
-                        i += 1
-                    while i < j and nums[j] == nums[j + 1]:
-                        j -= 1
+                    while i < j and nums[i] == nums[i - 1]: i += 1
+                    while i < j and nums[j] == nums[j + 1]: j -= 1
         return res
     
     # @ 18. 四数之和

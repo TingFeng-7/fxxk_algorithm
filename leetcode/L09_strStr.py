@@ -158,6 +158,8 @@ def decodeString(self, s: str) -> str:
             res += c
     return res
 
+
+
 # 示例
 version1 = "1.0"
 version2 = "1.1"

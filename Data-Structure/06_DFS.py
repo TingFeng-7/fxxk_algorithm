@@ -15,7 +15,6 @@ def dfs(grid: List[List[int]], i: int, j: int, visited: List[List[bool]]) -> Non
         next_j = j + d[1]
         dfs(grid, next_i, next_j, visited)
 
-#  从 (i, j) 开始，将与之相邻的陆地都变成海水
 
 
 def floodfill(grid: List[List[str]], i: int, j: int) -> None:
@@ -40,7 +39,8 @@ class Solution:
         dfs(grid, i, j + 1)
         dfs(grid, i - 1, j)
         dfs(grid, i, j - 1)
-        
+    
+    # 思想就是 二维遍历 + 漫水算法
     def numIslands(self, grid: List[List[str]]) -> int:
         res = 0
         m, n = len(grid), len(grid[0])  # ? 遍历 grid
@@ -50,4 +50,18 @@ class Solution:
                     res += 1 # 每发现一个岛屿，岛屿数量加一
                     self.dfs(grid, i, j) # 然后使用 DFS 将岛屿淹了
         return res
-    # @ 思想就是 二维遍历 + 漫水算法
+
+    # 79. 单词搜索
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        def dfs(i, j, k):
+            if not 0 <= i < len(board) or not 0 <= j < len(board[0]) or board[i][j] != word[k]: return False
+            if k == len(word) - 1: return True
+            board[i][j] = ''
+            res = dfs(i + 1, j, k + 1) or dfs(i - 1, j, k + 1) or dfs(i, j + 1, k + 1) or dfs(i, j - 1, k + 1)
+            board[i][j] = word[k]
+            return res
+
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if dfs(i, j, 0): return True
+        return False
