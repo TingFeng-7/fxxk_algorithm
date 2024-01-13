@@ -1,16 +1,15 @@
 from bisect import bisect_left
 import random
 from typing import List
-
+from collections import defaultdict
 
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         n = len(nums)
         sum = [0] * (n + 1)
-        #? 数组前缀和 + hash
+        # @ 数组前缀和 + hash
         for i in range(1, n+1):
             sum[i] = sum[i-1] + nums[i-1]
-
         s = {}
         for i in range(2, n+1):
             s[sum[i-2] % k] = s.get(sum[i-2] % k, 0) + 1  # 不需要value倒是
@@ -27,7 +26,8 @@ class Solution:
 
         for num in nums:
             prefixSum += num
-            count += prefixSumCounts[prefixSum - k]
+            count += prefixSumCounts[prefixSum - k] 
+            # 这里是一个关键步骤。如果当前前缀和减去目标值 k 在字典中存在，那么说明存在一个子数组，其和为 k。因此，将该计数器加到总数上。
             prefixSumCounts[prefixSum] += 1
 
         return count

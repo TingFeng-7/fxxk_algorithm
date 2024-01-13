@@ -23,9 +23,8 @@ def randomPartition(arr: List[int], low: int, high: int) -> int:
     arr[low], arr[pivot_idx] = arr[pivot_idx], arr[low]     # pivot放置到最左边
     return partition(arr, low, high)
 
-# ? 215. 返回第K个元素
+# ? 215. 返回第K大元素
 def topKSplit(arr: List[int], low: int, high: int, k: int) -> int:
-    
     p = randomPartition(arr, low, high)
     if p == k - 1:                             # 第 K个 元素的下标为k-1
         return arr[p]  # !! 找到即返回

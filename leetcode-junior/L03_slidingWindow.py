@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     # @ 76. 最小覆盖子串
     def minWindow(self, s: str, t: str) -> str:
@@ -54,26 +55,10 @@ class Solution:
             res = max(res, right - left)
         return res
     
-    # @ 05. 最长回文子串 DP解法
-    def longestPalindrome_dp(self, s: str) -> str:
-        #@ 动态规划法
-        dp = [[False]*len(s) for i in range(len(s))]
-        maxL = 1
-        left, right = 0, 0
-        for i in range(len(s)-1, -1, -1):
-            for j in range(i, len(s)):
-                if s[i] == s[j] and (j - i < 2 or dp[i + 1][j - 1]):
-                    dp[i][j] = True
-                if dp[i][j] and j-i+1 > maxL:
-                    maxL = j-i+1
-                    left, right = i, j
-        return s[left:left+maxL]
-    
-    # 209. 长度最小的子数组
+    # @ 209. 长度最小的子数组
     def minSubArrayLen(self, s: int, nums: List[int]) -> int:
         if not nums:
             return 0
-        
         n = len(nums)
         ans = n + 1
         left, right = 0, 0

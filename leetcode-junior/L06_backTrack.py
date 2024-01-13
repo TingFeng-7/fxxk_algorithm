@@ -23,7 +23,6 @@ class Solution:
     # @ 46.全排列
     def permute(self, nums: List[int]) -> List[List[int]]:
         res, used = [], [False] * len(nums)  # 用访问数组 来禁止访问
-
         def backtrack(nums, path):
             if not nums: # 如果数组里没有值
                 res.append(path)

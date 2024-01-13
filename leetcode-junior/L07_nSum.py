@@ -41,8 +41,7 @@ class Solution:
             else:
                 hi -= 1
         return target - min_bias
-    
-    # 
+
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
         n = len(nums)
@@ -51,7 +50,6 @@ class Solution:
             x = nums[i]
             if i and x == nums[i - 1]:
                 continue  # 优化三
-
             # 优化一
             s = x + nums[i + 1] + nums[i + 2]
             if s > target:  # 后面无论怎么选，选出的三个数的和不会比 s 还小
@@ -84,6 +82,7 @@ class Solution:
                         ans = s
                     j += 1
         return ans
+    
     # @ 三数之和 思想： target=0
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
