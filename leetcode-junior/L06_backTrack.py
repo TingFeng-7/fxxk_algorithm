@@ -1,8 +1,8 @@
-from typing import List
+from typing import List, Optional
 
 #  https://labuladong.gitee.io/algo/di-ling-zh-bfe1b/hui-su-sua-56e11/
 class Solution:
-    #  22. 括号生成
+    # @ 22. 括号生成
     def generateParenthesis(self, n: int) -> List[str]:
         #回溯 剪枝
         sz = 2 * n

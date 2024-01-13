@@ -102,7 +102,6 @@ def multiply(num1: str, num2: str) -> str:
 def myAtoi(s):
     # 去除前导空格
     s = s.lstrip()
-
     # 判断正负号
     sign = 1
     if s and (s[0] == '-' or s[0] == '+'):

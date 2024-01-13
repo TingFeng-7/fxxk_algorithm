@@ -2,16 +2,17 @@ from typing import List
 
 
 class Solution:
-    # @两数之和 思想: 使用hashmap 「need_val : ind」
+    # @ 2，两数之和 
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        memo = {}
+        valToIndex = {}
         for i in range(len(nums)):
-            need_val = target-nums[i]
-            if need_val in memo: # if need_val already exist in memo , directly return
-                return [memo[need_val], i]
-            else:
-                memo[nums[i]] = i # else val and cur_idx will record in memo 
-        return [0, 0]
+            # 查表，看看是否有能和 nums[i] 凑出 target 的元素
+            need = target - nums[i]
+            if need in valToIndex:
+                return [valToIndex[need], i]
+            # 存入 val -> index 的映射
+            valToIndex[nums[i]] = i
+        return []
     
     # @ 16. 最接近的三数之和
     def threeSumClosest(self, nums: List[int], target: int) -> int:
@@ -45,7 +46,7 @@ class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
         n = len(nums)
-        min_diff = inf
+        min_diff = float('inf')
         for i in range(n - 2):
             x = nums[i]
             if i and x == nums[i - 1]:
