@@ -1,4 +1,11 @@
+from typing import List
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class Solution:
+    
     # 80. 删除有序数组中的重复项 II
     def removeDuplicates(self, nums: List[int]) -> int:
         n = len(nums)
@@ -10,6 +17,7 @@ class Solution:
                 slow+=1
             fast+=1
         return slow
+    
     # 82. 删除排序链表中的重复元素 II
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         if not head:

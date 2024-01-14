@@ -10,15 +10,15 @@ class Solution:
         # 记录最小覆盖子串的起始索引及长度
         start, length = 0, float('inf') 
         while right < len(s):
-            # c是将移入窗口的字符
+            # ? 1.c是将移入窗口的字符
             c = s[right]
             right += 1
-            # 进行窗口内数据的一系列更新
+            # ? 2.进行窗口内数据的一系列更新
             if c in need:
                 window[c] += 1
                 if window[c] == need[c]:
                     valid += 1
-            # 判断左侧窗口是否要收缩
+            # ? 3.判断左侧窗口是否要收缩
             while valid == len(need): 
                 # 在这里更新最小覆盖子串
                 if right - left < length:

@@ -26,6 +26,7 @@ class Solution:
             # 从最高位生成数字的技巧
             y = y * 10 + last_digit
         return y == x
+    
     # @ 12。整数转罗马字符
     def intToRoman(self, num: int) -> str:
         # 使用哈希表，按照从大到小顺序排列

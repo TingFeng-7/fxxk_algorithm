@@ -129,6 +129,124 @@ def lengthOfLongestSubstring(s: str):
         res = max(res, right - left)
     return res
 
+def merge(intervals):
+    res = []
+    intervals.sort(lambda x: x[0])
+    res.append(intervals[0])
+    for curr in intervals[:1]:
+        last = res[-1]
+        if curr[0] <= last[1]:
+            last[1] = max(last[1], curr[1])
+        else:
+            res.append(curr)
+    return res
+
+def generate(n):
+    size = n*2
+    res = []
+    def dfs(path,l_num,r_num):
+        if l_num > n or r_num >n or r_num > l_num:
+            return
+        if len(path) == size and l_num == r_num:
+            res.append(path[:])
+            return
+        dfs(path+'(', l_num+1, r_num)
+        dfs(path+')', l_num, r_num+1)
+    dfs("", 0,0)
+    return res 
+
+def permute(nums):
+    res = []
+    def backtrack(path, choice):
+        if not choice:
+            res.append(path[:])
+            return
+        for i in range(choice):
+            backtrack(path+[choice[i]], choice[:i]+choice[i+1:])
+    backtrack(nums, [])
+    return res
+
+def subsets(nums):
+    res = []
+    nums_len = len(nums)
+    def backtrack(path, start):
+        if len(path) > nums_len:
+            return
+        else:
+            res.append(path[:])
+            for i in range(start, len(nums)):
+                path.append(nums[i])
+                backtrack(path, i+1)
+                path.pop(-1)
+    backtrack(0, [])
+    return res
+
+def letterCombinations(digits: str) -> List[str]:
+    if not digits:
+        return list()
+    phoneMap = {
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz",
+    }
+    combination = []
+    res = []
+    def backtrack(index: int):
+        if index == len(digits):
+            res.append("".join(combination))
+        else:
+            digit = digits[index]
+            for letter in phoneMap[digit]:
+                combination.append(letter)
+                backtrack(index + 1)
+                combination.pop()
+    backtrack(0)
+    return res
+class ListNode:
+    def __init__(self, val, next=None) -> None:
+        self.val = val
+        self.nxt = next
+        
+def reverse_iter(head):
+    dummy = ListNode(-1)
+    dummy.next = head
+    prev, curr = None, head
+    while curr:
+        nxt_node = curr.nxt
+        curr.nxt = prev
+        prev , curr = curr, nxt_node
+    return prev
+
+def reverse_recursion(head):
+    if head is None or head.nxt is None:
+        return head
+    last = reverse_recursion(head.nxt)
+    head.nxt.nxt = head
+    head.nxt = None
+    return last
+    
+# def remove(head, n):
+#     dhead = ListNode(-1, head)
+#     slow, fast = dhead, dhead
+#     while n > 0:
+#         fast = fast.nxt
+#         n-=1
+#     while fast:
+        
+def isSameTree(p, q):
+    if p ==None and q==None:
+        return True
+    if p is None or q is None:
+        return False
+    return p.val == q.val and \
+        isSameTree(p.left, q.right) and isSameTree(p.right, q.left)
+        
+        
 if __name__ =='__main__':
     arr = [1,3,4,5,2,3]
     quicksort(arr, 0, len(arr)-1)

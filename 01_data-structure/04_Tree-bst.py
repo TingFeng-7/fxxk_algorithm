@@ -22,7 +22,7 @@ class Solution: # 左中右 中序遍历
         return self.isValidBST(root.right)
 
     # 二叉搜索树转排序双向链表
-    def treeToDoublyList(self, root: 'Node') -> 'Node':
+    def treeToDoublyList(self, root: Optional[TreeNode]) ->  Optional[TreeNode]:
         def dfs(cur):
             if not cur: return
             dfs(cur.left) # 递归左子树
@@ -53,7 +53,7 @@ class Solution: # 左中右 中序遍历
             q.append(tmp.right)
         
         return True
-    # 450. 删除bst的某个节点
+    # @ 450. 删除bst的某个节点
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
             return None

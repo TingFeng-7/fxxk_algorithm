@@ -16,9 +16,21 @@ class Solution:
             elif nums[mid] > nums[r]:
             # else:
                 l = mid + 1
-
         return nums[l]
-    # 下一个最大字符
+    
+    def findMin(self, nums: List[int]) -> int:
+        left, right =0, len(nums)-1
+        while left <= right:
+            if nums[left] <= nums[right]:
+                return nums[left]
+            mid = left + (right-left)//2
+            if nums[left] <= nums[mid]:
+                left = mid +1
+            else:
+                right = mid
+        return -1
+    
+    # @ 下一个最大字符
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         l, r = 0, len(letters)
         if ord(letters[-1]) - ord(target) < 1:
@@ -31,7 +43,8 @@ class Solution:
             elif ord(letters[mid]) - ord(target) >= 1:  # 收缩区间
                 r = mid
         return letters[r]
-    # @ 33
+    
+    # @ 33 搜索旋转排序数组
     def search(self, nums: List[int], target: int) -> int:
         if not nums:
             return -1
@@ -52,7 +65,7 @@ class Solution:
                     r = mid - 1
         return -1
     
-    # ? 34. 在排序数组中查找元素的第一个和最后一个位置
+    # @ 34. 在排序数组中查找元素的第一个和最后一个位置
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         return [self.left_bound(nums, target), self.right_bound(nums, target)]
     
@@ -121,7 +134,7 @@ class Solution:
         else:
             return self.findKth(nums1, i, nums2, j + half_k, k - half_k)
         
-    # 74. 搜索二维矩阵
+    # ? 74. 搜索二维矩阵
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         m, n = len(matrix), len(matrix[0])
         x,y = 0, n - 1
@@ -133,6 +146,7 @@ class Solution:
             else:
                 return True
         return False   
+    
     # ? 240. 搜索二维矩阵 II
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         r = len(matrix) # 行

@@ -48,7 +48,6 @@ class Interval_Solution:
             if e[0] > end:
                 end = e[1]
                 ans += 1
-
         return ans
     
     # @ 763. 划分字母区间

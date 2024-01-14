@@ -67,7 +67,6 @@ class Solution:
                     path.append(nums[i])
                     backtrack(i + 1, path)  # @ i+1 不是start+1
                     path.pop(-1)
-
         backtrack(0, [])
         return res
 
@@ -114,9 +113,8 @@ class Solution:
         backtrack(0, [], 0)
         return res
 
-    #@ N 皇后 Hard
+    # @ N 皇后 Hard
     def solveNQueens(self, n: int) -> List[List[str]]:
-        # :type n: int :rtype: List[List[str]]
         m = n * 2 - 1
         ans = []
         col = [0] * n
@@ -134,6 +132,7 @@ class Solution:
                     on_path[c] = diag1[r + c] = diag2[r - c] = False  # ! 恢复现场
         dfs(0)
         return ans
+    
     # @ 17. 电话号码的字符组合
     def letterCombinations(self, digits: str) -> List[str]:
         if not digits:
@@ -191,8 +190,9 @@ class Solution:
             lo += 1
             hi -= 1
         return True
+    
     # @ 113. 路径总和 2  对二叉树
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+    def pathSum(root, targetSum: int) -> List[List[int]]:
         res, path = [], []
         def recur(root, tar):
             if not root: return

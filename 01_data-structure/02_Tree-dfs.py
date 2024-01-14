@@ -3,7 +3,8 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
-        
+from typing import List, Optional
+
 # @ 22.括号生成
 def generateParenthesis(self, n: int) -> List[str]:  # 回溯 + 剪枝
     sz, res = 2*n, []
@@ -24,7 +25,6 @@ def generateParenthesis(self, n: int) -> List[str]:  # 回溯 + 剪枝
 # @100. 相同的树  思想：如果左右子树都为空 返回相等， 只有某一个为空则错误，其余dfs深入返回
 def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
     """_summary_
-
     Args:
         p (Optional[TreeNode]): a tree
         q (Optional[TreeNode]): b tree
@@ -43,7 +43,7 @@ def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 def isSymmetric(self, root: Optional[TreeNode]) -> bool:
     return self.isSameTree(root.left, root.right)
 
-    # @ 14. 二叉树展开为链表
+# @ 14. 二叉树展开为链表
 def flatten(self, root: Optional[TreeNode]) -> None:
     """
     Do not return anything, modify root in-place instead.

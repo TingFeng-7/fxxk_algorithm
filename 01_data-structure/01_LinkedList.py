@@ -176,7 +176,7 @@ def longestValidParentheses(self, s: str) -> int:
                 stack.append(i)
     return max_len
 
-# @ hard 合并K个有序链表
+# @ hard 合并 K个有序链表
 def mergeKLists(self, lists: List[ListNode]) -> ListNode:
     import heapq
     dummy = ListNode(0)    # 创建一个链表头节点，并将其初始值设置为0
@@ -205,8 +205,8 @@ def mergeKLists(self, lists: List[ListNode]) -> ListNode:
 
 # @ 19. 删除链表的倒数第 N 个结点
 def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-    dhead = ListNode(-1)
-    dhead.next = head
+    dhead = ListNode(-1, head)
+    # dhead.next = head
     slow, fast = dhead,dhead
     while n>0:
         fast = fast.next
