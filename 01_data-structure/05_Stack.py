@@ -28,22 +28,22 @@ class MinStack:
 # 括号问题
 # https://labuladong.github.io/algo/di-san-zha-24031/jing-dian--a94a0/ru-he-jie--306f6/
 class Solution:
-    # @ 20 有效的括号 思想：左括号进栈，右括号出现但没有相应左括号是 直接返回false
     def isValid(self, s: str) -> bool:
+        # @ 20 有效的括号 思想：左括号进栈，右括号出现但没有相应左括号是 直接返回false
         hashmap = {'{': '}', '[': ']', '(': ')'}
         stack = []
         for c in s:
             if c in hashmap:
                 stack.append(c)
-            elif stack != []:  # : 栈不为空的前提下
+            elif stack != []:  
                 if hashmap[stack.pop()] != c:
                     return False
-            else: # : 栈已经为空了
+            elif stack == []:
                 return False
         return stack == []
     
-    # 编码字符串
     def decodeString(self, s: str) -> str:
+        # 编码字符串
         stack, res, multi = [], "", 0
         for c in s:
             if c == '[':

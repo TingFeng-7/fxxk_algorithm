@@ -1,6 +1,7 @@
 class Solution:
-    # 1541
+
     def minInsertions(self, s: str) -> int:
+        # 1541 最小插入次数
         res = 0
         need = 0
         
@@ -20,8 +21,8 @@ class Solution:
         
         return res + need
     
-    # 921.
     def minAddToMakeValid(self, s: str) -> int:
+        # 921.
         res = 0 # res 记录需要左括号的插入次数
         need = 0 # need 变量记录右括号的需求量
 

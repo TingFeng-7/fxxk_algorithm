@@ -2,8 +2,9 @@ from typing import List, Optional
 
 #  https://labuladong.gitee.io/algo/di-ling-zh-bfe1b/hui-su-sua-56e11/
 class Solution:
-    # @ 22. 括号生成
+
     def generateParenthesis(self, n: int) -> List[str]:
+        #  22. 括号生成
         #回溯 剪枝
         sz = 2 * n
         res = []
@@ -17,11 +18,11 @@ class Solution:
             dfs(path+'(', l_num+1, r_num)
             dfs(path+')', l_num, r_num+1)
 
-        dfs("", 0,0)
+        dfs("", 0, 0)
         return res 
     
-    # @ 46.全排列
     def permute(self, nums: List[int]) -> List[List[int]]:
+        # @ 46.全排列
         res, used = [], [False] * len(nums)  # 用访问数组 来禁止访问
         def backtrack(nums, path):
             if not nums: # 如果数组里没有值
@@ -32,8 +33,8 @@ class Solution:
         backtrack(nums, [])
         return res
     
-    # @ 47. 全排列 
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        #  47. 全排列 
         nums.sort()
         self.res = []
         check = [0 for i in range(len(nums))]
@@ -54,8 +55,8 @@ class Solution:
             self.backtrack(sol+[nums[i]], nums, check)
             check[i] = 0
             
-    # @ 78.子集
     def subsets(self, nums: List[int]) -> List[List[int]]:
+        #  78.子集
         res, n = [], len(nums)
         
         def backtrack(start:int, path:List[int]):
@@ -70,8 +71,8 @@ class Solution:
         backtrack(0, [])
         return res
 
-    #@ 39.组合总和 
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        # 39.组合总和 
         res, n  = [], len(candidates) 
         def backtrack(start, curpath, cursum):  # 开始位置， 上一层选择
             #! 1.结束条件
@@ -89,8 +90,9 @@ class Solution:
         backtrack(0, [], 0)
         return res
 
-    #@ 组合总和 3
+
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        # 组合总和 3
         res = []
         def backtrack(start, curpath, cursum):  # 开始index， 当前选择， 当前选择和
             if len(curpath) == k:  # 顺利终止条件
@@ -113,8 +115,8 @@ class Solution:
         backtrack(0, [], 0)
         return res
 
-    # @ N 皇后 Hard
     def solveNQueens(self, n: int) -> List[List[str]]:
+        # N 皇后 Hard
         m = n * 2 - 1
         ans = []
         col = [0] * n
@@ -133,8 +135,8 @@ class Solution:
         dfs(0)
         return ans
     
-    # @ 17. 电话号码的字符组合
     def letterCombinations(self, digits: str) -> List[str]:
+        # @ 17. 电话号码的字符组合
         if not digits:
             return list()
         phoneMap = {

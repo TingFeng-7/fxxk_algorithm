@@ -108,34 +108,71 @@ class Solution:
                 r = m
         return l
 
-    # ? 04.寻找两个正序数组的中位数
+
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        def findKth(self, nums1, i, nums2, j, k):
+            if i >= len(nums1): 
+                return nums2[j + k - 1] 
+            if j >= len(nums2):
+                return nums1[i + k - 1] 
+            if k == 1:
+                return min(nums1[i], nums2[j])
+            half_k = k // 2
+            midVal1 = nums1[i + half_k - 1] if i + half_k - 1 < len(nums1) else float('inf')
+            midVal2 = nums2[j + half_k - 1] if j + half_k - 1 < len(nums2) else float('inf')
+            
+            if midVal1 < midVal2:  
+                return self.findKth(nums1, i + half_k, nums2, j, k - half_k)
+            else:
+                return self.findKth(nums1, i, nums2, j + half_k, k - half_k)
+            
         m, n = len(nums1), len(nums2)
         left = (m + n + 1) // 2
         right = (m + n + 2) // 2
-        return (self.findKth(nums1, 0, nums2, 0, left) + self.findKth(nums1, 0, nums2, 0, right)) / 2.0
+        return (findKth(nums1, 0, nums2, 0, left) + findKth(nums1, 0, nums2, 0, right)) / 2.0
+    
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        """
+        寻找两个正序数组的中间值
 
-    # ? 寻找第K小元素
-    def findKth(self, nums1, i, nums2, j, k):
-        if i >= len(nums1):  # i,j 分别是两个数组的 start
-            return nums2[j + k - 1]  # nums1 is an empty array
-        if j >= len(nums2):
-            return nums1[i + k - 1]  # nums2 is an empty array
-        if k == 1:
-            return min(nums1[i], nums2[j])
-        half_k = k // 2
-        midVal1 = nums1[i + half_k - 1] if i + \
-            half_k - 1 < len(nums1) else float('inf')
-        midVal2 = nums2[j + half_k - 1] if j + \
-            half_k - 1 < len(nums2) else float('inf')
-        if midVal1 < midVal2:  # 比较两个 大哥谁更小
-            # 已经派出了 HALF K个元素
-            return self.findKth(nums1, i + half_k, nums2, j, k - half_k)
-        else:
-            return self.findKth(nums1, i, nums2, j + half_k, k - half_k)
-        
-    # ? 74. 搜索二维矩阵
+        Args:
+            nums1 (List[int]): _description_
+            nums2 (List[int]): _description_
+
+        Returns:
+            float: _description_
+        """        
+        def k_min(start1,end1,start2,end2,k):
+            cur_nums1 = end1-start1+1
+            cur_nums2 = end2-start2+1
+            if cur_nums1 == 0:
+                return nums2[start2+k-1]
+            if cur_nums2 == 0:
+                return nums1[start1+k-1]
+            if k == 1:
+                return min(nums1[start1],nums2[start2])
+            m1 = start1 + min(cur_nums1,k//2) - 1
+            m2 = start2 + min(cur_nums2,k//2) - 1
+            if nums1[m1] <= nums2[m2]:
+                return k_min(m1+1,end1,start2,end2,k-(m1-start1+1))
+            else:
+                return k_min(start1,end1,m2+1,end2,k-(m2-start2+1))
+        m,n = len(nums1),len(nums2)
+        a,b = (m+n+1)//2,(m+n+2)//2
+        x = k_min(0,m-1,0,n-1,a)
+        y = k_min(0,m-1,0,n-1,b)
+        return (x+y)/2
+
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        """
+        74. 搜索二维矩阵
+        Args:
+            matrix (List[List[int]]): 二维数组
+            target (int): 寻找目标
+
+        Returns:
+            bool: _description_
+        """        
         m, n = len(matrix), len(matrix[0])
         x,y = 0, n - 1
         while x < m and y >= 0:
@@ -147,8 +184,16 @@ class Solution:
                 return True
         return False   
     
-    # ? 240. 搜索二维矩阵 II
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        """
+        240. 搜索二维矩阵 II
+        Args:
+            matrix (List[List[int]]): _description_
+            target (int): _description_
+
+        Returns:
+            bool: _description_
+        """        
         r = len(matrix) # 行
         c = len(matrix[0]) # 列
         # 排除只有单行 单列 的情况

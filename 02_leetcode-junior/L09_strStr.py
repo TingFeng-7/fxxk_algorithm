@@ -1,7 +1,7 @@
 class Solution:
     # 05.breakpoint 最长回文子串
     def longestPalindrome_dp(self, s: str) -> str:
-        #@ 动态规划法
+        # 动态规划法
         dp = [[False]*len(s) for i in range(len(s))]
         maxL = 1
         left, right = 0, 0
@@ -15,7 +15,7 @@ class Solution:
         return s[left:left+maxL]
 
     def longestPalindrome_center(self, s: str) -> str:
-        # @ 二重循环 + 判断是否回文 中心扩散法
+        #  二重循环 + 判断是否回文 中心扩散法
         res = ""
         def palindrome(s, l, r):
             # l,r不越界 and 左右端点相等时
@@ -32,6 +32,24 @@ class Solution:
             res = res if len(res) > len(s2) else s2
         return res
 
+    def longestPalindrome(self, s: str) -> str:
+        maxlen = 0
+        length = len(s)
+        li = [[False for x in range(length)] for x in range(length)]
+        for end in range(length):
+            for i in range(end+1):
+                # 构造dp
+                if end-i in [0,1,2] and s[i] == s[end]:
+                    li[i][end] = True
+                else:
+                    li[i][end] = (li[i+1][end-1]) and (s[i] == s[end])
+                    
+                # 寻找最大串
+                if li[i][end] and end-i+1 > maxlen:
+                    maxlen = end-i+1
+                    maxstr = s[i:end+1]            
+        return maxstr
+    
     def countSubstrings(self, s):
         # 动态规划法
         dp = [[False] * len(s) for _ in range(len(s))]
