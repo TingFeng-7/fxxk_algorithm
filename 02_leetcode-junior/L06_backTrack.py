@@ -223,3 +223,22 @@ class Solution:
             for j in range(len(board[0])):
                 if dfs(i, j, 0): return True
         return False
+
+    def partition(self, s: str) -> List[List[str]]:
+        # 131. 分割回文串，把s中的数组划分成若干个 回文子串的形式
+        ans = []
+        path = []
+        n = len(s)
+        def dfs(i: int) -> None:
+            if i == n:
+                ans.append(path.copy())  # 复制 path
+                return
+            for j in range(i, n):  # 枚举子串的结束位置
+                t = s[i: j + 1]
+                if t == t[::-1]:  # 判断是否回文
+                    path.append(t)
+                    dfs(j + 1)
+                    path.pop()  # 恢复现场
+        dfs(0)
+        return ans
+
