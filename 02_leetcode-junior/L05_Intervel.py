@@ -18,7 +18,7 @@ class Interval_Solution:
                 res.append(curr)
         return res
     
-    # @ 435 非重叠区间
+    # @ 435 非重叠区间 （抹去重叠的区间）
     # https://leetcode.cn/problems/non-overlapping-intervals/
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         if not intervals:

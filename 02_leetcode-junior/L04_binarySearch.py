@@ -6,7 +6,7 @@ class Solution:
     # https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/solutions/134812/yi-wen-jie-jue-4-dao-sou-suo-xuan-zhuan-pai-xu-s-3/
     # 一文解决四道搜索旋转排序数组
     
-    # 153. 寻找旋转排序数组中的最小值
+    #@153. 寻找旋转排序数组中的最小值
     def findMin(self, nums: List[int]) -> int:
         l, r = 0, len(nums)-1
         while l < r:
@@ -79,6 +79,8 @@ class Solution:
                 left = mid + 1
             elif nums[mid] >= target: # 2 搜索区间变为 [left, mid-1] and 收缩右侧边界
                 right = mid - 1
+            elif nums[mid] == target: # 2 搜索区间变为 [left, mid-1] and 收缩右侧边界
+                right = mid - 1
         # 检查出界情况
         if left >= len(nums) or nums[left] != target: 
             return -1
@@ -150,15 +152,16 @@ class Solution:
             if cur_nums2 == 0:
                 return nums1[start1+k-1]
             if k == 1:
-                return min(nums1[start1],nums2[start2])
-            m1 = start1 + min(cur_nums1,k//2) - 1
-            m2 = start2 + min(cur_nums2,k//2) - 1
+                return min(nums1[start1], nums2[start2])
+            m1 = start1 + min(cur_nums1, k//2) - 1
+            m2 = start2 + min(cur_nums2, k//2) - 1
             if nums1[m1] <= nums2[m2]:
                 return k_min(m1+1,end1,start2,end2,k-(m1-start1+1))
             else:
                 return k_min(start1,end1,m2+1,end2,k-(m2-start2+1))
+            
         m,n = len(nums1),len(nums2)
-        a,b = (m+n+1)//2,(m+n+2)//2
+        a,b = (m+n+1)//2, (m+n+2)//2
         x = k_min(0,m-1,0,n-1,a)
         y = k_min(0,m-1,0,n-1,b)
         return (x+y)/2

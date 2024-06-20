@@ -1,5 +1,10 @@
-
+# hot100 全包含
+# 71. 简化路径
+# 155. 最小栈
+# 20. 有效的括号 
+# 394. 字符串编码
 class MinStack:
+    #155 最小栈
     def __init__(self):
         self.stack = []
         self.mins = []
@@ -29,7 +34,8 @@ class MinStack:
 # https://labuladong.github.io/algo/di-san-zha-24031/jing-dian--a94a0/ru-he-jie--306f6/
 class Solution:
     def isValid(self, s: str) -> bool:
-        # @ 20 有效的括号 思想：左括号进栈，右括号出现但没有相应左括号是 直接返回false
+        #  20 有效的括号 
+        # 思想：左括号进栈，右括号出现但没有相应左括号是 直接返回 false
         hashmap = {'{': '}', '[': ']', '(': ')'}
         stack = []
         for c in s:
@@ -43,8 +49,9 @@ class Solution:
         return stack == []
     
     def decodeString(self, s: str) -> str:
-        # 编码字符串
-        stack, res, multi = [], "", 0
+        # 394. 字符串编码
+        stack, res,  = [], ""
+        multi = 0
         for c in s:
             if c == '[':
                 stack.append([multi, res])
@@ -58,8 +65,9 @@ class Solution:
                 res += c
         return res
     
-    # 简化路径
+    
     def simplifyPath(self, path: str) -> str:
+        # 71. 简化路径
         parts = path.split("/")
         stk = []
         # 借助栈计算最终的文件夹路径
