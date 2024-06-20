@@ -213,3 +213,37 @@ class Solution:
 
         recur(root, targetSum)
         return res
+
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        # 79 单词搜索，在mxn的二维矩阵中找到符合给定word的字符串，存在则返回True，反之返回False
+        def dfs(i, j, k):
+            if not 0 <= i < len(board) or not 0 <= j < len(board[0]) or board[i][j] != word[k]: return False
+            if k == len(word) - 1: return True
+            board[i][j] = ''
+            res = dfs(i + 1, j, k + 1) or dfs(i - 1, j, k + 1) or dfs(i, j + 1, k + 1) or dfs(i, j - 1, k + 1)
+            board[i][j] = word[k]
+            return res
+
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if dfs(i, j, 0): return True
+        return False
+
+    def partition(self, s: str) -> List[List[str]]:
+        # 131. 分割回文串，把s中的数组划分成若干个 回文子串的形式
+        ans = []
+        path = []
+        n = len(s)
+        def dfs(i: int) -> None:
+            if i == n:
+                ans.append(path.copy())  # 复制 path
+                return
+            for j in range(i, n):  # 枚举子串的结束位置
+                t = s[i: j + 1]
+                if t == t[::-1]:  # 判断是否回文
+                    path.append(t)
+                    dfs(j + 1)
+                    path.pop()  # 恢复现场
+        dfs(0)
+        return ans
+
